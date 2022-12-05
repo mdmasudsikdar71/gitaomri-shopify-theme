@@ -1,0 +1,55 @@
+// Put your application javascript here
+$(function() {
+    // Product Slider
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        loopFillGroupWithBlank: true,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            480: {
+                slidesPerView: 2,
+                spaceBetween: 30
+            },
+            // when window width is >= 640px
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 20
+            }
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true
+        },
+        navigation: {
+            nextEl: ".next",
+            prevEl: ".prev"
+        }
+    });
+
+    // Single Product
+    var swiper = new Swiper(".ProductSwiper", {
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+    });
+    var swiper2 = new Swiper(".ProductSwiper2", {
+        loop: true,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+            swiper: swiper
+        }
+    });
+});
