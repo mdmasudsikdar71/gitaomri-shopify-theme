@@ -1,3 +1,4 @@
+{% comment %}
 {% if cart.item_count > 0 %}
   <h1>cart</h1>
   <form action="/cart" method="post" novalidate>
@@ -44,3 +45,141 @@
   <h2>cart</h2>
   Cart is empty
 {% endif %}
+
+{% endcomment %}
+
+<section class="ViewCartPage">
+
+  <div class="container">
+
+    <div class="row">
+
+      <!-- item -->
+      <div class="col-lg-8">
+
+        <div class="header">
+          <h3>My cart</h3>
+        </div>
+
+        <!-- item -->
+        <div class="ViewCartPageItem">
+
+          <!-- left -->
+          <div class="left">
+
+            <div class="img">
+              {{ 'img3.webp' | asset_url | img_tag: 'The Soap Store' }}
+            </div>
+
+          </div>
+
+          <div class="TextContent">
+
+            <!-- text -->
+            <div class="text">
+              <h4>BOWTIE NECK BLOUSE W/ PEPLUM</h4>
+              <p>$260.00</p>
+              <p>Size: 4</p>
+              <p>Color: WHITE/BLACK</p>
+            </div>
+
+            <!-- Counter -->
+            <div class="Counter">
+
+              <div class="input">
+                <div class="minus">
+                  {{ 'minus.png' | asset_url | img_tag: 'The Soap Store' }}
+                </div>
+                <input type="text" value="1" name="" id="">
+                <div class="plus">
+                  {{ 'plus.png' | asset_url | img_tag: 'The Soap Store' }}
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Price -->
+            <div class="Price">
+              <h4>$260.00</h4>
+            </div>
+
+            <!-- Close -->
+            <div class="Close">
+              {{ 'close.png' | asset_url | img_tag: 'The Soap Store' }}
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- EnterPromoCode -->
+        <div class="EnterPromoCode">
+
+          <div class="EnterPromoCodeItem">
+            <a href="" class="d_flex"> <img src="frontend_assets/images/price-tag.png" alt=""> Enter a promo code </a>
+          </div>
+
+          <div class="EnterPromoCodeItem">
+            <a href="" class="d_flex"> <img src="frontend_assets/images/files.png" alt=""> Add a note </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-4">
+
+        <div class="OrderSummery">
+
+          <h3>Order summary</h3>
+
+          <ul>
+
+            <li>
+              <div class="left">
+                <h5>Subtotal</h5>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Estimate Shipping</button>
+              </div>
+              <h5>$1,185.00</h5>
+            </li>
+
+            <li>
+              <h6>Total</h6>
+              <h6>$1,185.00</h6>
+            </li>
+
+          </ul>
+
+          <div class="CheckOut">
+            <a href="">Checkout</a>
+          </div>
+
+          <!-- Paypal -->
+          <div class="Paypal">
+            <a href="" class="d_flex">
+              <img src="frontend_assets/images/paypal.svg" alt="">
+              <h6>Checkout</h6>
+            </a>
+          </div>
+
+          <!-- Paypal -->
+          <div class="Paypal">
+            <a href="" class="d_flex">
+              <img src="frontend_assets/images/paypalshot.svg" alt="">
+              <h6>Pay Later</h6>
+            </a>
+          </div>
+
+          <div class="Secure d_flex">
+            <h6><img src="frontend_assets/images/lock.png" alt=""> Secure Checkout</h6>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

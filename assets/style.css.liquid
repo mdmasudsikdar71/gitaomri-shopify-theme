@@ -96,18 +96,18 @@ p{
     height: 195px;
 }
 
-.logoImg .Bag {
+.Bag {
     position: absolute;
     top: 50%;
     right: 0;
     transform: translateY(-50%);
 }
 
-.logoImg .Bag img {
+.Bag img {
     height: 40px;
 }
 
-.logoImg .Bag span {
+.Bag span {
     font-size: 18px;
     line-height: 20px;
     font-weight: 500;
@@ -170,9 +170,14 @@ p{
     border-bottom: 2px solid var(--text_color);
 }
 
+/* MobileMenu */
+
 .MobileMenu {
     display: none;
 }
+
+
+
 
 /* RightSideBar */
 .RightSideBar .offcanvas-header{
@@ -404,7 +409,7 @@ p{
 
 .BannerContent a {
     font-size: 14px;
-    font-weight: normal;
+    {% comment %}font-weight: normal;{% endcomment %}
     font-style: italic;
     color: #A70757;
     margin-top: 80px;
@@ -670,7 +675,7 @@ p{
     margin-top: 20px;
     font-size: 16px;
     font-weight: 400;
-    /*lighting-color: 24px;*/
+    lighting-color: 24px;
     color: var(--white_color);
     font-style: italic;
 }
@@ -875,7 +880,7 @@ input[type='radio']:checked:after {
 
 .OmriEssential .Header h6{
     font-size: 14px;
-    /*list-style: 20px;*/
+    list-style: 20px;
     font-weight: 300;
     color: var(--main_color1);
     padding: 10px 0;
@@ -912,10 +917,10 @@ input[type='radio']:checked:after {
 
 .MissionContent p{
     margin-bottom: 15px;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
-    font-family: 'Lato', sans-serif;
+    line-height: normal;
+    font-family: lato-light, lato, sans-serif;
     font-style: normal;
 }
 
@@ -1070,7 +1075,7 @@ input[type='radio']:checked:after {
     AboutDetails
 --------------------------------------------------------------------------------------------------------------------------- */
 .AboutDetails{
-    background: url('../images/aboutbg.jpg');
+    background: url('aboutbg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1137,10 +1142,6 @@ input[type='radio']:checked:after {
     padding: 40px 0;
 }
 
-.MoreAboutContent {
-    padding: 0 100px;
-}
-
 .MoreAboutContent h4{
     font-size: 20px;
     line-height: 30px;
@@ -1152,7 +1153,7 @@ input[type='radio']:checked:after {
 .MoreAboutContent p{
     font-weight: 400;
     font-size: 16px;
-    /*font-weight: 24px;*/
+    font-style: normal;
     margin-top: 20px;
     font-family: lato-light, lato, sans-serif;
 }
@@ -1163,7 +1164,7 @@ input[type='radio']:checked:after {
 }
 
 .MoreAboutContent a{
-    background: url('../images/aboutbg.jpg');
+    background: url('aboutbg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1242,7 +1243,7 @@ input[type='radio']:checked:after {
     font-weight: 300;
     margin-right: 50px;
     padding-right: 40px;
-    /*border-right: 1px solid var(--main_color);*/
+    border-right: 1px solid var(--main_color);
     width: 200px;
     font-family: 'Lato', sans-serif;
 }
@@ -1511,7 +1512,7 @@ input[type='radio']:checked:after {
 
 .OrderSummery li button{
     font-size: 16px;
-    /*font-weight: 24px;*/
+    font-weight: 24px;
     font-weight: 400;
     font-style: italic;
     font-family: "times new roman", times, serif;
@@ -1525,7 +1526,7 @@ input[type='radio']:checked:after {
 
 .OrderSummery li h6{
     font-size: 20px;
-    /*font-weight: 30px;*/
+    font-weight: 30px;
     font-weight: 400;
     font-style: italic;
 }
@@ -1684,7 +1685,7 @@ button.PopupModelClose {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: url('../images/load.jpg');
+    background: url('load.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1932,7 +1933,7 @@ button.PopupModelClose {
 .BlogSingleContent h3{
     font-family: raleway, sans-serif;
     font-size: 28px;
-    /*list-style: 40px;*/
+    list-style: 40px;
     font-weight: 400;
     color: var(--main_color1);
     margin-top: 20px;
@@ -1941,7 +1942,7 @@ button.PopupModelClose {
 .BlogSingleContent span{
     font-family:"times new roman", times, serif;
     font-size: 14px;
-    /*list-style: 20px;*/
+    list-style: 20px;
     font-weight: 400;
     color: var(--main_color1);
     display: inline-block;
@@ -1951,7 +1952,7 @@ button.PopupModelClose {
 .BlogSingleContent p{
     font-family:"times new roman", times, serif;
     font-size: 18px;
-    /*list-style: 27px;*/
+    list-style: 27px;
     font-weight: 400;
     color: var(--main_color1);
     display: inline-block;
@@ -1962,7 +1963,7 @@ button.PopupModelClose {
 .BlogSingleContent a{
     font-family:"times new roman", times, serif;
     font-size: 18px;
-    /*list-style: 27px;*/
+    list-style: 27px;
     font-weight: 400;
     color: var(--bg_color);
     display: inline-block;
@@ -2254,6 +2255,36 @@ button.PopupModelClose {
 /* // Tablet */
 @media screen and (max-width: 1023px) and (min-width: 768px) {
 
+    .MobileMenu{
+        display: block;
+        padding: 20px 0;
+    }
+    .DesktopMenu{
+        display: none;
+    }
+    .logo{
+        text-align: center;
+    }
+    .logo img {
+        height: 130px;
+    }
+    .Bag {
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: unset;
+        text-align: center;
+    }
+    .Bag img {
+        height: 60px;
+    }
+    .Bag span {
+        font-size: 22px;
+        line-height: 25px;
+        top: 30px;
+    }
+
+
 }
 
 /* // Mobile */
@@ -2262,225 +2293,59 @@ button.PopupModelClose {
 }
 
 
+@font-face {
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 400;
+    font-display: block;
+    src: url("raleway400.woff2") format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 700;
+    font-display: block;
+    src: url("raleway700.woff2") format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+    font-display: block;
+    font-family: "Lato-Light";
+    src: url("latolight1.woff2") format("woff2"),
+    url("latolight2.woff") format("woff"),
+    url("latolight3.ttf") format("truetype");
+}
+@font-face {
+    font-display: block;
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Lato Italic'), local('Lato-Italic'), url("lato400.woff2") format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+    font-display: block;
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("lato700.woff2") format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 
 @font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 400;
-    font-display: block;
-    src: url("/font/Raleway/Raleway-VariableFont_wght.ttf") format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 400;
-    font-display: block;
-    src: url("/font/Raleway/Raleway-VariableFont_wght.ttf") format('woff2');
-    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 400;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptsg8zYS_SKggPNyCg4QoFqL_KWxWMT.woff2") format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 400;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptsg8zYS_SKggPNyCg4Q4FqL_KWxWMT.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 400;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptsg8zYS_SKggPNyCg4TYFqL_KWxQ.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 700;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptsg8zYS_SKggPNyCg4QIFqL_KWxWMT.woff2") format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 700;
-    font-display: block;
-    src: url("/font/Raleway/Raleway-VariableFont_wght.ttf") format('woff2');
-    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 700;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptsg8zYS_SKggPNyCg4QoFqL_KWxWMT.woff2") format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 700;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptsg8zYS_SKggPNyCg4Q4FqL_KWxWMT.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 700;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptsg8zYS_SKggPNyCg4TYFqL_KWxQ.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyCAIT4ttDfCmxA.woff2") format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyCkIT4ttDfCmxA.woff2") format('woff2');
-    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyCIIT4ttDfCmxA.woff2") format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyCMIT4ttDfCmxA.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyCAIT4ttDfCmxA.woff2") format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyCkIT4ttDfCmxA.woff2") format('woff2');
-    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyCIIT4ttDfCmxA.woff2") format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyCMIT4ttDfCmxA.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-display: block;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Raleway/v26/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
     font-display: block;
     font-family: "Lato-Light";
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/2hXzmNaFRuKTSBR9nRGO-A.woff2") format("woff2"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/kU6VHbqMAZhaN_nXCmLQsQ.woff") format("woff"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/BTu4SsVveqk58cdYjlaM9g.ttf") format("truetype"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/lato-light-Svg.svg") format("svg");
-}
-@font-face {
-    font-display: block;
-    font-family: "Lato-Light";
-    font-weight: 700;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/7nLfsQCzhQW_PwpkrwroYw.woff2") format("woff2"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/I1Pn3gihk5vyP0Yw5GqKsQ.woff") format("woff"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/zpv3sOKAbMf4wff105oLjw.ttf") format("truetype"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/lato-light-700-Svg.svg") format("svg");
-}
-@font-face {
-    font-display: block;
-    font-family: "Lato-Light";
-    font-style: italic;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/XNVd6tsqi9wmKNvnh5HNEFtXRa8TVwTICgirnJhmVJw.woff2") format("woff2"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/XNVd6tsqi9wmKNvnh5HNED8E0i7KZn-EPnyo3HZu7kw.woff") format("woff"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/XNVd6tsqi9wmKNvnh5HNEKCWcynf_cDxXwCLxiixG1c.ttf") format("truetype"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/lato-light-italic-Svg.svg") format("svg");
-}
-@font-face {
-    font-display: block;
-    font-family: "Lato-Light";
-    font-weight: 700;
-    font-style: italic;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/AcvTq8Q0lyKKNxRlL28Rn1tXRa8TVwTICgirnJhmVJw.woff2") format("woff2"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/AcvTq8Q0lyKKNxRlL28Rnz8E0i7KZn-EPnyo3HZu7kw.woff") format("woff"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/AcvTq8Q0lyKKNxRlL28Rn6CWcynf_cDxXwCLxiixG1c.ttf") format("truetype"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/lato-light-700-italic-Svg.svg") format("svg");
+    src: url("latolight1.woff2") format("woff2"),
+    url("latolight2.woff") format("woff"),
+    url("latolight3.ttf") format("truetype");
 }
 @font-face {
     font-display: block;
     font-family: 'Lato';
     font-style: italic;
     font-weight: 400;
-    src: local('Lato Italic'), local('Lato-Italic'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Lato Italic'), local('Lato-Italic'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 700;
-    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2") format('woff2');
+    src: local('Lato Italic'), local('Lato-Italic'), url("lato400.woff2") format('woff2');
     unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
@@ -2488,144 +2353,6 @@ button.PopupModelClose {
     font-family: 'Lato';
     font-style: italic;
     font-weight: 700;
-    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Lato Regular'), local('Lato-Regular'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2") format('woff2');
+    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("lato700.woff2") format('woff2');
     unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Lato Regular'), local('Lato-Regular'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6uyw4BMUTPHjx4wXiWtFCc.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Lato Bold'), local('Lato-Bold'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Lato Bold'), local('Lato-Bold'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-display: block;
-    font-family: "Lato-Light";
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/2hXzmNaFRuKTSBR9nRGO-A.woff2") format("woff2"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/kU6VHbqMAZhaN_nXCmLQsQ.woff") format("woff"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/BTu4SsVveqk58cdYjlaM9g.ttf") format("truetype"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/lato-light-Svg.svg") format("svg");
-}
-@font-face {
-    font-display: block;
-    font-family: "Lato-Light";
-    font-weight: 700;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/7nLfsQCzhQW_PwpkrwroYw.woff2") format("woff2"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/I1Pn3gihk5vyP0Yw5GqKsQ.woff") format("woff"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/zpv3sOKAbMf4wff105oLjw.ttf") format("truetype"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/lato-light-700-Svg.svg") format("svg");
-}
-@font-face {
-    font-display: block;
-    font-family: "Lato-Light";
-    font-style: italic;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/XNVd6tsqi9wmKNvnh5HNEFtXRa8TVwTICgirnJhmVJw.woff2") format("woff2"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/XNVd6tsqi9wmKNvnh5HNED8E0i7KZn-EPnyo3HZu7kw.woff") format("woff"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/XNVd6tsqi9wmKNvnh5HNEKCWcynf_cDxXwCLxiixG1c.ttf") format("truetype"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/lato-light-italic-Svg.svg") format("svg");
-}
-@font-face {
-    font-display: block;
-    font-family: "Lato-Light";
-    font-weight: 700;
-    font-style: italic;
-    src: url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/AcvTq8Q0lyKKNxRlL28Rn1tXRa8TVwTICgirnJhmVJw.woff2") format("woff2"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/AcvTq8Q0lyKKNxRlL28Rnz8E0i7KZn-EPnyo3HZu7kw.woff") format("woff"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/AcvTq8Q0lyKKNxRlL28Rn6CWcynf_cDxXwCLxiixG1c.ttf") format("truetype"),
-    url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato-light/v14/lato-light-700-italic-Svg.svg") format("svg");
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Lato Italic'), local('Lato-Italic'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Lato Italic'), local('Lato-Italic'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 700;
-    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 700;
-    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Lato Regular'), local('Lato-Regular'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Lato Regular'), local('Lato-Regular'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6uyw4BMUTPHjx4wXiWtFCc.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Lato Bold'), local('Lato-Bold'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Lato Bold'), local('Lato-Bold'), url("//static.parastorage.com/services/santa-resources/dist/viewer/user-site-fonts/fonts/Lato/v16/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-display: block;
-    font-family:"Avenir-LT-W01_85-Heavy1475544";
-    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/6af9989e-235b-4c75-8c08-a83bdaef3f66.eot?#iefix");
-    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/6af9989e-235b-4c75-8c08-a83bdaef3f66.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/d513e15e-8f35-4129-ad05-481815e52625.woff2") format("woff2"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/61bd362e-7162-46bd-b67e-28f366c4afbe.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/ccd17c6b-e7ed-4b73-b0d2-76712a4ef46b.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/20577853-40a7-4ada-a3fb-dd6e9392f401.svg#20577853-40a7-4ada-a3fb-dd6e9392f401") format("svg");
 }

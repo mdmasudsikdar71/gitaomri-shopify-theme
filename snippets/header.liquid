@@ -15,7 +15,8 @@
                         <a href="/">{{ 'logo.jpg' | asset_url | img_tag: 'The Soap Store' }}</a>
 
                         <div class="Bag">
-                            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="frontend_assets/images/shopping-bag.png" alt="">
+                            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                {{ 'shopping-bag.png' | asset_url | img_tag: 'The Soap Store' }}
                                 <span>0</span>
                             </button>
 
@@ -180,19 +181,29 @@
 
                                     <ul>
 
-                                        <li>
-                                            <a href=""> Shop </a>
-
-                                            <ul class="subMenu">
-                                                <li><a href="spring.html">SPRING 23</a></li>
-                                                <li><a href="Omri_Essential.html">OMRI ESSENTIALS</a></li>
-                                            </ul>
-
-                                        </li>
-                                        <li> <a href="mission.html"> Our Mission </a> </li>
-                                        <li> <a href="about.html"> About Gita </a> </li>
-                                        <li> <a href="collection.html"> Collection </a> </li>
-                                        <li> <a href="media.html"> Media </a> </li>
+                                        {% for link in linklists.main-menu.links %}
+                                            {% assign child_list_handle = link.title | handleize %}
+                                            {% if linklists[child_list_handle].links != blank %}
+                                            <li>
+                                                <a href="{{ link.url }}">{{ link.title }}</a>
+                                                <ul class="subMenu">
+                                                    {% for childlink in linklists[child_list_handle].links %}
+                                                    <li>
+                                                        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                            {% else %}
+                                                <li>
+                                                    {% if link.url == "https://runway360.cfda.com/designers/gita-omri-2" %}
+                                                        <a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
+                                                    {% else %}
+                                                        <a href="{{ link.url }}">{{ link.title }}</a>
+                                                    {% endif %}
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
 
                                     </ul>
 

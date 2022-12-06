@@ -11,11 +11,25 @@
                     <ul>
 
                         <li><p>© 2022 Gita Omri Brown</p></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="">Size Chart</a></li>
-                        <li><a href="">By Appointment</a></li>
-                        <li><a href="">Gift Card</a></li>
-                        <li><a href="">Return and Exchanges</a></li>
+                        {% for link in linklists.footer-menu.links %}
+                            {% assign child_list_handle = link.title | handleize %}
+                            {% if linklists[child_list_handle].links != blank %}
+                                <li>
+                                    <a href="{{ link.url }}">{{ link.title }}</a>
+                                    <ul class="subMenu">
+                                        {% for childlink in linklists[child_list_handle].links %}
+                                            <li>
+                                                <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{{ link.url }}">{{ link.title }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
                         <li>
                             <a href=""><i class="fab fa-facebook-f"></i></a>
                             <a href=""><i class="fab fa-instagram"></i></a>
