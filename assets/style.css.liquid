@@ -1075,10 +1075,8 @@ input[type='radio']:checked:after {
     AboutDetails
 --------------------------------------------------------------------------------------------------------------------------- */
 .AboutDetails{
-    background: url('aboutbg.jpg');
-    background-repeat: no-repeat;
+    background: url({{ settings.about_background_image | img_url: '1366x478' }});
     background-size: cover;
-    background-position: center;
     padding: 100px 0;
     position: relative;
 }
@@ -1164,9 +1162,7 @@ input[type='radio']:checked:after {
 }
 
 .MoreAboutContent a{
-    background: url('aboutbg.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url({{ settings.about_background_image | img_url: '1366x478' }});
     background-size: cover;
     font-size: 18px;
     font-weight: 600;

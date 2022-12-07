@@ -8,7 +8,7 @@
       <div class="col-lg-6">
 
         <div class="ContactImg">
-          {{ 'contact.jpg' | asset_url | img_tag: 'The Soap Store' }}
+          {{ 'contact.jpg' | asset_url | img_tag: 'Gita Omri' }}
         </div>
 
       </div>
@@ -90,12 +90,12 @@
 
             <li class="d_flex">
               <h5>PR + MEDIA</h5>
-              <a href="mailto:gitaomri@verynewyork.com">gitaomri@verynewyork.com</a>
+              <a href="mailto:{{ settings.media_email }}">{{ settings.media_email }}</a>
             </li>
 
             <li class="d_flex">
               <h5>WHOLESALE</h5>
-              <a href="mailto:Contact@gitaomri.com">Contact@gitaomri.com</a>
+              <a href="mailto:{{ settings.wholesale_email }}">{{ settings.wholesale_email }}</a>
             </li>
 
           </ul>

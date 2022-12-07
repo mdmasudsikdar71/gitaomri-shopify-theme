@@ -1,16 +1,3 @@
-{% comment %}
-{% for product in collections.frontpage.products limit:4 %}
-  <div>
-    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-    {{ product.price | money }}
-    {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-    <a href="{{ product.url | within: collection }}">
-      <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-    </a>
-  </div>
-{% endfor %}
-{% endcomment %}
-
 <section class="Banner d_flex">
 
   <!-- BannerContent -->
@@ -27,7 +14,7 @@
   <!-- BanenrImg -->
   <div class="BanenrImg">
 
-    {{ 'banner.jpg' | asset_url | img_tag: 'The Soap Store' }}
+    {{ 'banner.jpg' | asset_url | img_tag: 'Gita Omri' }}
 
   </div>
 
@@ -43,6 +30,7 @@
     <div class="swiper mySwiper">
 
       <div class="swiper-wrapper">
+        {% for product in collections.frontpage.products %}
 
         <!-- item -->
         <div class="swiper-slide">
@@ -51,11 +39,16 @@
 
             <!-- img -->
             <div class="img">
-              <a href="">
-                {% comment %}{{ 'img1.webp' | asset_url | img_tag: 'The Soap Store' }}{% endcomment %}
-                {{ 'img2.webp' | asset_url | img_tag: 'The Soap Store' }}
+              <a href="{{ product.url | within: collection }}">
+                {{ product.featured_image.src | img_url: '361x361' | img_tag: 'Gita Omri' }}
               </a>
-              <span>Pre Sale</span>
+
+              {% comment %}
+              {% unless product.available %}
+              <span>sold out</span>
+              {% endunless %}
+              {% endcomment %}
+
               <div class="quickView">
                 <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Quick View
@@ -64,10 +57,10 @@
             </div>
 
             <!-- text -->
-            <a href="product_details.html">
+            <a href="{{ product.url | within: collection }}">
               <div class="text">
-                <h3>ESSENTIAL TANK TOP</h3>
-                <p>$450</p>
+                <h3>{{ product.title }}</h3>
+                <p>{{ product.price | money }}</p>
               </div>
             </a>
 
@@ -75,156 +68,7 @@
 
         </div>
 
-        <!-- item -->
-        <div class="swiper-slide">
-
-          <div class="SliderItem">
-
-            <!-- img -->
-            <div class="img">
-              <a href="">
-                {{ 'img2.webp' | asset_url | img_tag: 'The Soap Store' }}
-              </a>
-              <span>Pre Sale</span>
-              <div class="quickView">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Quick View
-                </button>
-              </div>
-            </div>
-
-            <!-- text -->
-            <a href="">
-              <div class="text">
-                <h3>ESSENTIAL TANK TOP</h3>
-                <p>$450</p>
-              </div>
-            </a>
-
-          </div>
-
-        </div>
-
-        <!-- item -->
-        <div class="swiper-slide">
-
-          <div class="SliderItem">
-
-            <!-- img -->
-            <div class="img">
-              <a href="product_details.html">
-                {{ 'img3.webp' | asset_url | img_tag: 'The Soap Store' }}
-              </a>
-              <span>Pre Sale</span>
-              <div class="quickView">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Quick View
-                </button>
-              </div>
-            </div>
-
-            <!-- text -->
-            <a href="product_details.html">
-              <div class="text">
-                <h3>ESSENTIAL TANK TOP</h3>
-                <p>$450</p>
-              </div>
-            </a>
-
-          </div>
-
-        </div>
-
-        <!-- item -->
-        <div class="swiper-slide">
-
-          <div class="SliderItem">
-
-            <!-- img -->
-            <div class="img">
-              <a href="">
-                {{ 'img4.webp' | asset_url | img_tag: 'The Soap Store' }}
-              </a>
-              <span>Pre Sale</span>
-              <div class="quickView">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Quick View
-                </button>
-              </div>
-            </div>
-
-            <!-- text -->
-            <a href="">
-              <div class="text">
-                <h3>ESSENTIAL TANK TOP</h3>
-                <p>$450</p>
-              </div>
-            </a>
-
-          </div>
-
-        </div>
-
-        <!-- item -->
-        <div class="swiper-slide">
-
-          <div class="SliderItem">
-
-            <!-- img -->
-            <div class="img">
-              <a href="">
-                {{ 'img5.webp' | asset_url | img_tag: 'The Soap Store' }}
-              </a>
-              <span>Pre Sale</span>
-              <div class="quickView">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Quick View
-                </button>
-              </div>
-            </div>
-
-            <!-- text -->
-            <a href="">
-              <div class="text">
-                <h3>ESSENTIAL TANK TOP</h3>
-                <p>$450</p>
-              </div>
-            </a>
-
-          </div>
-
-        </div>
-
-        <!-- item -->
-        <div class="swiper-slide">
-
-          <div class="SliderItem">
-
-            <!-- img -->
-            <div class="img">
-              <a href="">
-                {{ 'img6.webp' | asset_url | img_tag: 'The Soap Store' }}
-              </a>
-              <span>Pre Sale</span>
-              <div class="quickView">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Quick View
-                </button>
-              </div>
-            </div>
-
-            <!-- text -->
-            <a href="">
-              <div class="text">
-                <h3>ESSENTIAL TANK TOP</h3>
-                <p>$450</p>
-              </div>
-            </a>
-
-          </div>
-
-        </div>
-
+        {% endfor %}
       </div>
 
     </div>

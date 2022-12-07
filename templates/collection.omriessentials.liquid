@@ -1,0 +1,74 @@
+<section class="OmriEssential">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="Header">
+
+                    <h2>Pre-Order Omri Essentials Now</h2>
+                    <h6>Expected shipping early January</h6>
+                    <h4>More styles to come shortly....</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="Spring">
+
+    <div class="container">
+
+        <div class="row">
+
+            {% for product in collection.products %}
+            <!-- item -->
+            <div class="col-lg-4">
+
+                <div class="SliderItem">
+
+                    <a href="{{ product.url | within: collection }}">
+
+                        <!-- img -->
+                        <div class="img">
+                            {{ product.featured_image.src | img_url: '361x361' | img_tag: 'Gita Omri' }}
+
+                            {% comment %}
+                            {% unless product.available %}
+                            <span>sold out</span>
+                            {% endunless %}
+                            {% endcomment %}
+
+                            <div class="quickView">
+                                <p>Quick View</p>
+                            </div>
+                        </div>
+
+                        <!-- text -->
+                        <div class="text">
+
+                            <h3>{{ product.title }}</h3>
+                            <p>{{ product.price | money }}</p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

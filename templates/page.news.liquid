@@ -18,104 +18,120 @@
                     </div>
 
                     <!-- MediaImg -->
-                    <div class="MediaImg">
+                    {% comment %}<div class="MediaImg">{% endcomment %}
+{% comment %}{% endcomment %}
+                        {% comment %}<div class="row">{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}<!-- item -->{% endcomment %}
+                            {% comment %}<div class="col-lg-6">{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}<div class="img">{% endcomment %}
+                                    {% comment %}<a href="https://www.wework.com/creator/personal-profiles/one-designers-mission-to-elevate-size-inclusive-clothing/">{% endcomment %}
+                                        {% comment %}<img src="https://static.wixstatic.com/media/4a676d_7b513c6edfb346ca9acece0d7212b815~mv2_d_1716_1514_s_2.png/v1/fill/w_375,h_329,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Screen%20Shot%202019-03-01%20at%202_16_11%20PM.png" alt="">{% endcomment %}
+                                        {% comment %}{% comment %}{{ 'media.png' | asset_url | img_tag: 'Gita Omri' }}{% endcomment %}{% endcomment %}
+                                    {% comment %}</a>{% endcomment %}
+                                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}<!-- item -->{% endcomment %}
+                            {% comment %}<div class="col-lg-6">{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}<div class="img">{% endcomment %}
+                                    {% comment %}<a href="https://ideamensch.com/gita-omri/">{% endcomment %}
+                                        {% comment %}<img src="https://static.wixstatic.com/media/4a676d_bfa19efa4b6f48658e13003a28d8af86~mv2_d_2116_1504_s_2.png/v1/fill/w_467,h_329,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Screen%20Shot%202019-03-01%20at%202_20_09%20PM.png" alt="">{% endcomment %}
+                                        {% comment %}{% comment %}{{ 'media2.png' | asset_url | img_tag: 'Gita Omri' }}{% endcomment %}{% endcomment %}
+                                    {% comment %}</a>{% endcomment %}
+                                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}<!-- item -->{% endcomment %}
+                            {% comment %}<div class="col-lg-6">{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}<div class="img">{% endcomment %}
+                                    {% comment %}<a href="https://darlingmagazine.org/inclusive-fashion-designer-gita-omri/">{% endcomment %}
+                                        {% comment %}<img src="https://static.wixstatic.com/media/4a676d_2ec495ea693c4f6995faf23998769d14~mv2_d_1748_1406_s_2.png/v1/fill/w_411,h_329,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Screen%20Shot%202019-03-01%20at%202_23_52%20PM.png" alt="">{% endcomment %}
+                                        {% comment %}{% comment %}{{ 'media2.png' | asset_url | img_tag: 'Gita Omri' }}{% endcomment %}{% endcomment %}
+                                    {% comment %}</a>{% endcomment %}
+                                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}<!-- item -->{% endcomment %}
+                            {% comment %}<div class="col-lg-6">{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}<div class="img">{% endcomment %}
+                                    {% comment %}<a href="http://www.orchardstrategies.com/orchard-blog/2017/12/17/gita-omri-inclusive-designer-entrepreneur-launches-fashion-line">{% endcomment %}
+                                        {% comment %}<img src="https://static.wixstatic.com/media/4a676d_a14ee852632f482187698ae4a478f4e6~mv2_d_1500_1514_s_2.png/v1/fill/w_309,h_311,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Screen%20Shot%202019-03-01%20at%202_26_02%20PM.png" alt="">{% endcomment %}
+                                        {% comment %}{% comment %}{{ 'media.png' | asset_url | img_tag: 'Gita Omri' }}{% endcomment %}{% endcomment %}
+                                    {% comment %}</a>{% endcomment %}
+                                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                        {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                    {% comment %}</div>{% endcomment %}
 
-                        <div class="row">
-
-                            <!-- item -->
-                            <div class="col-lg-6">
-
-                                <div class="img">
-                                    {{ 'media.png' | asset_url | img_tag: 'The Soap Store' }}
-                                </div>
-
-                            </div>
-
-                            <!-- item -->
-                            <div class="col-lg-6">
-
-                                <div class="img">
-                                    {{ 'media2.png' | asset_url | img_tag: 'The Soap Store' }}
-                                </div>
-
-                            </div>
-
-                            <!-- item -->
-                            <div class="col-lg-6">
-
-                                <div class="img">
-                                    {{ 'media2.png' | asset_url | img_tag: 'The Soap Store' }}
-                                </div>
-
-                            </div>
-
-                            <!-- item -->
-                            <div class="col-lg-6">
-
-                                <div class="img">
-                                    {{ 'media.png' | asset_url | img_tag: 'The Soap Store' }}
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    {% section 'media' %}
 
                     <!-- BlogPart -->
                     <div class="BlogPart">
 
                         <div class="row">
+                            {%- for article in blogs.news.articles -%}
+                                <!-- item -->
+                                <div class="col-lg-4 mb-4">
 
-                            <!-- item -->
-                            <div class="col-lg-4">
+                                    <div class="BlogItem">
+                                        {%- if article.image -%}
+                                            {{ article | img_url: '292x292' | img_tag: 'Gita Omri' }}
+                                        {%- endif -%}
+                                        <!-- overlay -->
+                                        <div class="overlay">
 
-                                <div class="BlogItem">
+                                            <!-- header -->
+                                            <div class="header">
+                                                <a href="" class="d_flex">
+                                                    <span>{{ article.author }}</span>
+                                                    {% comment %}{{ 'crown.png' | asset_url | img_tag: 'Gita Omri' }}{% endcomment %}
+                                                </a>
 
-                                    {{ 'blog2.jpg' | asset_url | img_tag: 'The Soap Store' }}
+                                                <ul>
+                                                    <li>{{ article.created_at | date: "%b %d, %Y"}}</li>
+                                                    {% comment %}<li>4 Min</li>{% endcomment %}
+                                                </ul>
+                                            </div>
 
-                                    <!-- overlay -->
-                                    <div class="overlay">
+                                            <!-- bottom -->
+                                            <div class="bottom">
 
-                                        <!-- header -->
-                                        <div class="header">
-                                            <a href="" class="d_flex"><span>Gita Omri Brown</span>
-                                                {{ 'crown.png' | asset_url | img_tag: 'The Soap Store' }}
-                                            </a>
+                                                <h4 style="border-bottom: none !important;">
+                                                    <a href="{{ article.url }}">{{ article.title }}</a>
+                                                </h4>
 
-                                            <ul>
-                                                <li>Mar 1, 2020</li>
-                                                <li>4 Min</li>
-                                            </ul>
-
-                                        </div>
-
-                                        <!-- bottom -->
-                                        <div class="bottom">
-
-                                            <h4>
-                                                <a href="blog_single.html">The Greatest Love of All </a>
-                                            </h4>
-
-                                            <div class="commentPart d_flex">
-
-                                                <!-- left -->
-                                                <div class="left d_flex">
-
-                                                    <a href="" class="d_flex">
-                                                        <i class="fas fa-eye"></i><span>78</span>
-                                                    </a>
-
-                                                    <a href="" class="d_flex">
-                                                        <i class="fas fa-comment-alt"></i><span>78</span>
-                                                    </a>
-
-                                                </div>
-
-                                                <!-- right -->
-                                                <div class="right">
-                                                    <a href="" class="heart"><span>1</span> <i class="far fa-heart"></i></a>
-                                                </div>
+                                                {% comment %}<div class="commentPart d_flex">{% endcomment %}
+{% comment %}{% endcomment %}
+                                                    {% comment %}<!-- left -->{% endcomment %}
+                                                    {% comment %}<div class="left d_flex">{% endcomment %}
+{% comment %}{% endcomment %}
+                                                        {% comment %}<a href="" class="d_flex">{% endcomment %}
+                                                        {% comment %}<i class="fas fa-eye"></i><span>78</span>{% endcomment %}
+                                                        {% comment %}</a>{% endcomment %}
+{% comment %}{% endcomment %}
+                                                        {% comment %}<a href="{{ article.url }}#comments" class="d_flex">{% endcomment %}
+                                                            {% comment %}<i class="fas fa-comment-alt"></i><span>{{ article.comments_count }}</span>{% endcomment %}
+                                                        {% comment %}</a>{% endcomment %}
+{% comment %}{% endcomment %}
+                                                    {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                                                    {% comment %}<!-- right -->{% endcomment %}
+                                                    {% comment %}<div class="right">{% endcomment %}
+                                                    {% comment %}<a href="" class="heart"><span>1</span> <i class="far fa-heart"></i></a>{% endcomment %}
+                                                    {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                                                {% comment %}</div>{% endcomment %}
 
                                             </div>
 
@@ -124,129 +140,66 @@
                                     </div>
 
                                 </div>
-
-                            </div>
-
+                            {%- endfor -%}
                             <!-- item -->
-                            <div class="col-lg-4">
-
-                                <div class="BlogItem">
-
-                                    {{ 'blog1.jpg' | asset_url | img_tag: 'The Soap Store' }}
-
-                                    <!-- overlay -->
-                                    <div class="overlay">
-
-                                        <!-- header -->
-                                        <div class="header">
-                                            <a href="" class="d_flex"><span>Gita Omri Brown</span>
-                                                {{ 'crown.png' | asset_url | img_tag: 'The Soap Store' }}
-                                            </a>
-
-                                            <ul>
-                                                <li>Mar 1, 2020</li>
-                                                <li>4 Min</li>
-                                            </ul>
-
-                                        </div>
-
-                                        <!-- bottom -->
-                                        <div class="bottom">
-
-                                            <h4>
-                                                <a href="blog_single.html">The Greatest Love of All </a>
-                                            </h4>
-
-                                            <div class="commentPart d_flex">
-
-                                                <!-- left -->
-                                                <div class="left d_flex">
-
-                                                    <a href="" class="d_flex">
-                                                        <i class="fas fa-eye"></i><span>78</span>
-                                                    </a>
-
-                                                    <a href="" class="d_flex">
-                                                        <i class="fas fa-comment-alt"></i><span>78</span>
-                                                    </a>
-
-                                                </div>
-
-                                                <!-- right -->
-                                                <div class="right">
-                                                    <a href="" class="heart"><span>1</span> <i class="far fa-heart"></i></a>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <!-- item -->
-                            <div class="col-lg-4">
-
-                                <div class="BlogItem">
-
-                                    {{ 'blog2.jpg' | asset_url | img_tag: 'The Soap Store' }}
-
-                                    <!-- overlay -->
-                                    <div class="overlay">
-
-                                        <!-- header -->
-                                        <div class="header">
-                                            <a href="" class="d_flex"><span>Gita Omri Brown</span>
-                                                {{ 'crown.png' | asset_url | img_tag: 'The Soap Store' }}
-                                            </a>
-
-                                            <ul>
-                                                <li>Mar 1, 2020</li>
-                                                <li>4 Min</li>
-                                            </ul>
-
-                                        </div>
-
-                                        <!-- bottom -->
-                                        <div class="bottom">
-
-                                            <h4>
-                                                <a href="blog_single.html">The Greatest Love of All </a>
-                                            </h4>
-
-                                            <div class="commentPart d_flex">
-
-                                                <!-- left -->
-                                                <div class="left d_flex">
-
-                                                    <a href="" class="d_flex">
-                                                        <i class="fas fa-eye"></i><span>78</span>
-                                                    </a>
-
-                                                    <a href="" class="d_flex">
-                                                        <i class="fas fa-comment-alt"></i><span>78</span>
-                                                    </a>
-
-                                                </div>
-
-                                                <!-- right -->
-                                                <div class="right">
-                                                    <a href="" class="heart"><span>1</span> <i class="far fa-heart"></i></a>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
+                            {% comment %}<div class="col-lg-4">{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}<div class="BlogItem">{% endcomment %}
+{% comment %}{% endcomment %}
+                                    {% comment %}{{ 'blog2.jpg' | asset_url | img_tag: 'Gita Omri' }}{% endcomment %}
+{% comment %}{% endcomment %}
+                                    {% comment %}<!-- overlay -->{% endcomment %}
+                                    {% comment %}<div class="overlay">{% endcomment %}
+{% comment %}{% endcomment %}
+                                        {% comment %}<!-- header -->{% endcomment %}
+                                        {% comment %}<div class="header">{% endcomment %}
+                                            {% comment %}<a href="" class="d_flex"><span>Gita Omri Brown</span>{% endcomment %}
+                                                {% comment %}{{ 'crown.png' | asset_url | img_tag: 'Gita Omri' }}{% endcomment %}
+                                            {% comment %}</a>{% endcomment %}
+{% comment %}{% endcomment %}
+                                            {% comment %}<ul>{% endcomment %}
+                                                {% comment %}<li>Mar 1, 2020</li>{% endcomment %}
+                                                {% comment %}<li>4 Min</li>{% endcomment %}
+                                            {% comment %}</ul>{% endcomment %}
+{% comment %}{% endcomment %}
+                                        {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                                        {% comment %}<!-- bottom -->{% endcomment %}
+                                        {% comment %}<div class="bottom">{% endcomment %}
+{% comment %}{% endcomment %}
+                                            {% comment %}<h4>{% endcomment %}
+                                                {% comment %}<a href="blog_single.html">The Greatest Love of All </a>{% endcomment %}
+                                            {% comment %}</h4>{% endcomment %}
+{% comment %}{% endcomment %}
+                                            {% comment %}<div class="commentPart d_flex">{% endcomment %}
+{% comment %}{% endcomment %}
+                                                {% comment %}<!-- left -->{% endcomment %}
+                                                {% comment %}<div class="left d_flex">{% endcomment %}
+{% comment %}{% endcomment %}
+                                                    {% comment %}<a href="" class="d_flex">{% endcomment %}
+                                                        {% comment %}<i class="fas fa-eye"></i><span>78</span>{% endcomment %}
+                                                    {% comment %}</a>{% endcomment %}
+{% comment %}{% endcomment %}
+                                                    {% comment %}<a href="" class="d_flex">{% endcomment %}
+                                                        {% comment %}<i class="fas fa-comment-alt"></i><span>78</span>{% endcomment %}
+                                                    {% comment %}</a>{% endcomment %}
+{% comment %}{% endcomment %}
+                                                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                                                {% comment %}<!-- right -->{% endcomment %}
+                                                {% comment %}<div class="right">{% endcomment %}
+                                                    {% comment %}<a href="" class="heart"><span>1</span> <i class="far fa-heart"></i></a>{% endcomment %}
+                                                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                                            {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                                        {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                                    {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
                         </div>
 
                     </div>

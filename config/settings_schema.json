@@ -29,6 +29,40 @@
         "type": "image_picker",
         "id": "about_image",
         "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "about_background_image",
+        "label": "Background Image"
+      }
+    ]
+  },
+  {
+    "name": "Contact Information",
+    "settings": [
+      {
+        "type": "text",
+        "id": "media_email",
+        "label": "Media Email",
+        "default": "gitaomri@verynewyork.com"
+      },
+      {
+        "type": "text",
+        "id": "wholesale_email",
+        "label": "Wholesale Email",
+        "default": "contact@gitaomri.com"
+      },
+      {
+        "type": "text",
+        "id": "facebook_username",
+        "label": "Facebook Username",
+        "default": "GitaOmriOfficial"
+      },
+      {
+        "type": "text",
+        "id": "instagram_username",
+        "label": "Instagram Username",
+        "default": "gitaomriofficial"
       }
     ]
   }

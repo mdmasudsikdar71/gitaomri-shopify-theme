@@ -1,41 +1,204 @@
-{% assign number_of_comments = article.comments_count %}
-{% if comment and comment.created_at %}
-  {% assign number_of_comments = article.comments_count %}
-{% endif %}
+<section class="BlogSingle">
 
-<h1>{{ article.title }}</h1>
-{% capture author %}<strong>{{ article.author }}</strong>{% endcapture %}
-{% capture date %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
-{{ article.author }} @ {{ article.created_at }}
+    <div class="container">
 
-<div>{{ article.content }}</div>
-{% if blog.comments_enabled? %}
-  <h2>{{ number_of_comments }} comments</h2>
-  {% paginate article.comments by 5 %}
-    {% for comment in article.comments %}
-      <div>
-        <div>{{ comment.content }}</div>
-        {{ comment.author }} @ {{ comment.created_at }}
-      </div>
-    {% endfor %}
-    {% if paginate.pages > 1 %}
-      {{ paginate | default_pagination }}
-    {% endif %}
-  {% endpaginate %}
+        <div class="row">
 
-  <div>
-    {% form 'new_comment', article %}
-      {{ form.errors | default_errors }}
-      <label for="CommentAuthor">name</label>
-      <input type="text" name="comment[author]" id="CommentAuthor" placeholder="name" value="{{ form.author }}" autocapitalize="words">
+            <div class="col-lg-6">
 
-      <label for="CommentEmail">email</label>
-      <input type="email" name="comment[email]" id="CommentEmail" placeholder="email" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+                <div class="Header">
 
-      <label for="CommentBody">message</label>
-      <textarea name="comment[body]" id="CommentBody" placeholder="message">{{ form.body }}</textarea>
+                    <a href="/pages/media">All Posts</a>
 
-      <input type="submit" value="post">
-    {% endform %}
-  </div>
-{% endif %}
+                </div>
+
+            </div>
+
+            {% comment %}<div class="col-lg-6">{% endcomment %}
+{% comment %}{% endcomment %}
+                {% comment %}<div class="Search">{% endcomment %}
+                    {% comment %}<input type="text" name="">{% endcomment %}
+                    {% comment %}<i class="fas fa-search"></i>{% endcomment %}
+                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+
+        </div>
+
+        <!-- BlogSingleContent -->
+        <div class="BlogSingleContent">
+
+            <div class="header d_flex">
+
+                <div class="left d_flex">
+                    {%- if article.image -%}
+                    <div class="img">
+                        {{ article | img_url: '292x292' | img_tag: 'Gita Omri' }}
+                    </div>
+                    {%- endif -%}
+
+                    <ul>
+                        <li><a href="">{% capture author %}{{ article.author }}{% endcapture %}</a></li>
+                        <li>{{ article.created_at | date: "%b %d, %Y"}}</li>
+                    </ul>
+
+                </div>
+
+                <!--right -->
+                {% comment %}<div class="right">{% endcomment %}
+{% comment %}{% endcomment %}
+                    {% comment %}<div class="dropdown">{% endcomment %}
+                        {% comment %}<button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{% endcomment %}
+                            {% comment %}<i class="fas fa-ellipsis-v"></i>{% endcomment %}
+                        {% comment %}</button>{% endcomment %}
+                        {% comment %}<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">{% endcomment %}
+                            {% comment %}<li>{% endcomment %}
+                                {% comment %}<a class="dropdown-item" href="#">{% endcomment %}
+                                    {% comment %}<img src="frontend_assets/images/share.png" alt="">{% endcomment %}
+                                    {% comment %}Share Post{% endcomment %}
+                                {% comment %}</a>{% endcomment %}
+                            {% comment %}</li>{% endcomment %}
+                        {% comment %}</ul>{% endcomment %}
+{% comment %}{% endcomment %}
+                    {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                {% comment %}</div>{% endcomment %}
+
+            </div>
+
+            <div class="Content">
+
+                <h3>{{ article.title }}</h3>
+                <span>Updated: {{ article.updated_at | date: "%b %d, %Y"}}</span>
+
+                {{ article.content }}
+            </div>
+
+            <div class="SocialIcon">
+
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                <a href=""><i class="fas fa-link"></i></a>
+
+            </div>
+
+            <!-- Comments -->
+            <div class="Comments d_flex">
+
+                <div class="left">
+
+                    {% comment %}<h4>83 views</h4>{% endcomment %}
+                    <h4>{{ number_of_comments }} comments</h4>
+
+                </div>
+
+                {% comment %}<div class="right">{% endcomment %}
+                    {% comment %}<a href="">1 <i class="far fa-heart"></i></a>{% endcomment %}
+                {% comment %}</div>{% endcomment %}
+
+            </div>
+
+        </div>
+
+        <!-- RecentPost -->
+        <div class="RecentPost">
+
+            <div class="Header d_flex">
+
+                <h4>Recent Posts</h4>
+                <a href="/pages/media">See All</a>
+
+            </div>
+
+            <div class="row">
+                {%- for article in blogs.news.articles -%}
+                <!-- Item -->
+                <div class="col-lg-4">
+
+                    <div class="RecentPostItem">
+
+                        <div class="img">
+                            {%- if article.image -%}
+                                {{ article | img_url: '292x292' | img_tag: 'Gita Omri' }}
+                            {%- endif -%}
+                        </div>
+
+                        <div class="text">
+
+                            <a href="{{ article.url }}" class="AHeader">{{ article.title }}</a>
+
+                            {% comment %}<div class="commentPart d_flex">{% endcomment %}
+
+                                <!-- left -->
+                                {% comment %}<div class="left d_flex">{% endcomment %}
+{% comment %}{% endcomment %}
+                                    {% comment %}<a href="" class="d_flex">{% endcomment %}
+                                        {% comment %}<i class="fas fa-eye"></i><span>78</span>{% endcomment %}
+                                    {% comment %}</a>{% endcomment %}
+{% comment %}{% endcomment %}
+                                    {% comment %}<a href="" class="d_flex">{% endcomment %}
+                                        {% comment %}<i class="fas fa-comment-alt"></i><span>78</span>{% endcomment %}
+                                    {% comment %}</a>{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}</div>{% endcomment %}
+
+                                <!-- right -->
+                                {% comment %}<div class="right">{% endcomment %}
+                                    {% comment %}<a href="" class="heart"><span>1</span> <i class="far fa-heart"></i></a>{% endcomment %}
+                                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {%- endfor -%}
+
+
+            </div>
+
+        </div>
+
+        {% if blog.comments_enabled? %}
+            {% comment %}<h2>{{ number_of_comments }} comments</h2>{% endcomment %}
+            {% paginate article.comments by 5 %}
+                {% for comment in article.comments %}
+                    <div>
+                        <div>{{ comment.content }}</div>
+                        {{ comment.author }} @ {{ comment.created_at }}
+                    </div>
+                {% endfor %}
+                {% if paginate.pages > 1 %}
+                    {{ paginate | default_pagination }}
+                {% endif %}
+            {% endpaginate %}
+
+
+            <div class="FBComment">
+
+                <h5>Comments</h5>
+                {% form 'new_comment', article %}
+                    <div class="FBCommentItem d_flex">
+
+                        <div class="img">
+                            {{ 'file.jpg' | asset_url | img_tag }}
+                        </div>
+
+                        <div class="inputPart">
+                            <textarea name="comment[body]" id="CommentBody" rows="2" placeholder="Write a comment"></textarea>
+                        </div>
+
+                    </div>
+                {% endform %}
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>

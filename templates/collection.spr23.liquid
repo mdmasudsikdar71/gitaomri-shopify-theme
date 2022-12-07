@@ -1,0 +1,82 @@
+<section class="SpringHeader">
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="row">
+
+            <!-- SpringHeaderImg -->
+            <div class="col-lg-4">
+                <div class="SpringHeaderImg">
+                    {{ 'spring.jpg' | asset_url | img_tag: 'Gita Omri' }}
+                </div>
+            </div>
+
+
+            <div class="col-lg-8">
+
+                <div class="SpringHeaderContent">
+
+                    <h2>{{ collection.title }}</h2>
+
+                    {{ collection.description  }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="Spring">
+
+    <div class="container">
+
+        <div class="row">
+
+            {% for product in collection.products %}
+            <!-- item -->
+            <div class="col-lg-6">
+
+                <div class="SliderItem">
+
+                    <!-- img -->
+                    <div class="img">
+                        <a href="{{ product.url | within: collection }}">
+                            {{ product.featured_image.src | img_url: '361x361' | img_tag: 'Gita Omri' }}
+                        </a>
+                        {% comment %}
+                        {% unless product.available %}
+                        <span>sold out</span>
+                        {% endunless %}
+                        {% endcomment %}
+                        <div class="quickView">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- text -->
+                    <a href="{{ product.url | within: collection }}">
+                        <div class="text">
+                            <h3>{{ product.title }}</h3>
+                            <p>{{ product.price | money }}</p>
+                        </div>
+                    </a>
+
+                    <a href="" class="addCart">Add to Cart</a>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

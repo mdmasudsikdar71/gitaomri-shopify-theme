@@ -1,0 +1,43 @@
+<div class="MediaImg">
+
+    <div class="row">
+        {%- for mediad in blocks -%}
+
+        <!-- item -->
+        <div class="col-lg-6">
+
+            <div class="img">
+                {{ 'media.png' | asset_url | img_tag: 'Gita Omri' }}
+            </div>
+
+        </div>
+
+        {%- endfor -%}
+
+    </div>
+
+</div>
+{% schema %}
+{
+    "name": "Media Page",
+    "blocks": [
+        {
+            "name": "Media Image and URL",
+            "type": "image",
+            "settings" : [
+                {
+                    "type": "image_picker",
+                    "id" : "media_image",
+                    "label": "Media Image"
+                },
+                {
+                    "type": "text",
+                    "id" : "media_url",
+                    "label": "URL"
+                }
+            ]
+        }
+    ]
+}
+
+{% endschema %}

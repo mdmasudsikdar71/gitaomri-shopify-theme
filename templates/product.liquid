@@ -31,6 +31,9 @@
 
 {% endcomment %}
 
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
 <section class="ProductDetails">
 
     <div class="container">
@@ -40,7 +43,7 @@
             <div class="col-lg-12">
 
                 <div class="Header">
-                    <h6><span>Home /</span> #SIZEBEAUTIFUL TSHIRT</h6>
+                    <h6><span>Home /</span> {{ product.title }}</h6>
                 </div>
 
             </div>
@@ -58,32 +61,15 @@
                     <div class="ProductDetailsImg">
 
                         <!-- Main -->
-                        <div
-                                style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                                class="swiper ProductSwiper2"
-                        >
+                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper ProductSwiper2">
 
                             <div class="swiper-wrapper">
-
+                                {% for image in product.images %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}"/>
+                                    </div>
+                                {% endfor %}
                                 <!-- img -->
-                                <div class="swiper-slide">
-                                    <img src="frontend_assets/images/img1.webp" />
-                                </div>
-
-                                <!-- img -->
-                                <div class="swiper-slide">
-                                    <img src="frontend_assets/images/img2.webp" />
-                                </div>
-
-                                <!-- img -->
-                                <div class="swiper-slide">
-                                    <img src="frontend_assets/images/img3.webp" />
-                                </div>
-
-                                <!-- img -->
-                                <div class="swiper-slide">
-                                    <img src="frontend_assets/images/img4.webp" />
-                                </div>
 
                             </div>
 
@@ -94,21 +80,11 @@
 
                             <div class="swiper-wrapper">
 
-                                <div class="swiper-slide">
-                                    <img src="frontend_assets/images/img1.webp" />
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <img src="frontend_assets/images/img2.webp" />
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <img src="frontend_assets/images/img3.webp" />
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <img src="frontend_assets/images/img4.webp" />
-                                </div>
+                                {% for image in product.images %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}"/>
+                                    </div>
+                                {% endfor %}
 
                             </div>
 
@@ -119,20 +95,20 @@
 
                             <!-- item -->
                             <div class="textItem">
-                                <p>A simple OMRI ESSENTIALS Cap Sleeve Tee with relaxed silhouette, scooped neck and bound neckline. Featuring #SizeBeautiful logo on front.</p>
+                                {{ product.description }}
                             </div>
 
                             <!-- item -->
-                            <div class="textItem">
-                                <h5>Size/Fit</h5>
-                                <p>Sizes displayed 2 and 20.</p>
-                            </div>
-
-                            <!-- item -->
-                            <div class="textItem">
-                                <h5>Composition</h5>
-                                <p>Print - Brushed knit 100% Polyester </p>
-                            </div>
+                            {% comment %}<div class="textItem">{% endcomment %}
+                                {% comment %}<h5>Size/Fit</h5>{% endcomment %}
+                                {% comment %}<p>Sizes displayed 2 and 20.</p>{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}<!-- item -->{% endcomment %}
+                            {% comment %}<div class="textItem">{% endcomment %}
+                                {% comment %}<h5>Composition</h5>{% endcomment %}
+                                {% comment %}<p>Print - Brushed knit 100% Polyester </p>{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
 
                         </div>
 
@@ -146,64 +122,68 @@
 
                     <div class="ModalContent">
 
-                        <h3>#SIZEBEAUTIFUL TSHIRT</h3>
-                        <h4>$345.00</h4>
+                        <h3>{{ product.title }}</h3>
+                        <h4>{{ current_variant.price | money }}</h4>
 
-                        <form action="" method="post" class="ModalFrom">
+                        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
 
                             <!-- item -->
                             <div class="CustomeInput">
 
-                                <label>Size</label>
-
-                                <select name="">
-                                    <option value="">Select</option>
-                                    <option value="">0</option>
-                                    <option value="">2</option>
-                                    <option value="">4</option>
-                                    <option value="">6</option>
+                                <label for="productSelect">Size</label>
+                                <select  name="id" id="productSelect">
+                                    {% for variant in product.variants %}
+                                        {% if variant.available %}
+                                            <option value="{{ variant.id }}">
+                                                {{ variant.title }}
+                                            </option>
+                                        {% else %}
+                                            <option disabled="disabled">
+                                                {{ variant.title }} - sold out
+                                            </option>
+                                        {% endif %}
+                                    {% endfor %}
                                 </select>
 
                             </div>
 
                             <!-- item -->
+                            {% comment %}<div class="CustomeInput">{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}<label>Color: <span>NAVY/GOLD</span></label>{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}<div class="radioInput d_flex">{% endcomment %}
+                                    {% comment %}<input type="radio" class="blue" name="color">{% endcomment %}
+                                    {% comment %}<input type="radio" class="red" name="color">{% endcomment %}
+                                {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}<!-- item -->{% endcomment %}
+                            {% comment %}<div class="CustomeInput">{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}<label>SLEEVE LENGTH</label>{% endcomment %}
+{% comment %}{% endcomment %}
+                                {% comment %}<select name="">{% endcomment %}
+                                    {% comment %}<option value="">Select</option>{% endcomment %}
+                                    {% comment %}<option value="">Cap</option>{% endcomment %}
+                                    {% comment %}<option value="">Short</option>{% endcomment %}
+                                    {% comment %}<option value="">Long</option>{% endcomment %}
+                                {% comment %}</select>{% endcomment %}
+{% comment %}{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
+
+                            <!-- item -->
                             <div class="CustomeInput">
 
-                                <label>Color: <span>NAVY/GOLD</span></label>
-
-                                <div class="radioInput d_flex">
-                                    <input type="radio" class="blue" name="color">
-                                    <input type="radio" class="red" name="color">
-                                </div>
+                                <label for="Quantity">Quantity</label>
+                                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="Quantity">
 
                             </div>
 
                             <!-- item -->
                             <div class="CustomeInput">
-
-                                <label>SLEEVE LENGTH</label>
-
-                                <select name="">
-                                    <option value="">Select</option>
-                                    <option value="">Cap</option>
-                                    <option value="">Short</option>
-                                    <option value="">Long</option>
-                                </select>
-
-                            </div>
-
-                            <!-- item -->
-                            <div class="CustomeInput">
-
-                                <label>Quantity</label>
-
-                                <input type="number" name="" class="Quantity">
-
-                            </div>
-
-                            <!-- item -->
-                            <div class="CustomeInput">
-                                <button type="submit">Add to Cart</button>
+                                <button type="submit" name="add" id="AddToCart">Add to cart</button>
                             </div>
 
                             <!-- item -->
@@ -212,16 +192,16 @@
                                 <div class="SocialIcon">
 
                                     <a href="">
-                                        <img src="frontend_assets/images/whatsapp.png" alt="">
+                                        {{ 'whatsapp.png' | asset_url | img_tag }}
                                     </a>
                                     <a href="">
-                                        <img src="frontend_assets/images/facebook.png" alt="">
+                                        {{ 'facebook.png' | asset_url | img_tag }}
                                     </a>
                                     <a href="">
-                                        <img src="frontend_assets/images/twitter.png" alt="">
+                                        {{ 'twitter.png' | asset_url | img_tag }}
                                     </a>
                                     <a href="">
-                                        <img src="frontend_assets/images/pinterest.png" alt="">
+                                        {{ 'pinterest.png' | asset_url | img_tag }}
                                     </a>
 
                                 </div>
