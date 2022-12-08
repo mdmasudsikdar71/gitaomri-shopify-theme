@@ -14,77 +14,8 @@
 
                         <a href="/">{{ 'logo.jpg' | asset_url | img_tag: 'Gita Omri' }}</a>
 
-                        <div class="Bag">
-                            <button type="button" id="addToCartBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                                {{ 'shopping-bag.png' | asset_url | img_tag: 'Gita Omri' }}
-                                <span class="item-count-number">0</span>
-                            </button>
-
-                        </div>
-
                         <!-- RightSideBar -->
-                        <div class="RightSideBar">
-
-                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-
-                                <div class="offcanvas-header">
-                                    <button type="button" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fas fa-chevron-right"></i></button>
-                                    <h5>Cart</h5>
-                                </div>
-
-                                <div class="offcanvas-body">
-
-                                    <!-- product Item -->
-                                    <div class="RightSideBarCart">
-
-                                        {% for item in cart.items %}
-                                            <div class="RightSideBarItem">
-
-                                                <div class="img">
-                                                    <a href="{{ item.url }}"><img src="{{ item.image | img_url }}" width="80px" height="80px" alt=""></a>
-                                                </div>
-
-                                                <div class="text">
-                                                    <h5>{{ item.product.title }}</h5>
-                                                    {% comment %}<h5>BLOUSE W/ PEPLUM</h5>{% endcomment %}
-                                                    <p>{{ item.price | money }}</p>
-
-                                                    <div class="input">
-                                                        <div class="minus" onclick="updateCart('minus', '{{ item.id }}')"><img src="{{ 'minus.png' | asset_url }}" alt=""></div>
-                                                        <input type="text" onchange="clearFromCart('{{ item.id }}', event.target.value)" class="{{ item.id }}" value="{{ item.quantity }}" id="">
-                                                        <div class="plus" onclick="updateCart('plus', '{{ item.id }}')"><img src="{{ 'plus.png' | asset_url }}" alt=""></div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="closeHover">
-                                                    <img src="{{ 'close.png' | asset_url }}" alt="">
-                                                </div>
-
-                                            </div>
-                                        {% endfor %}
-
-                                    </div>
-
-                                    <!-- subtotal -->
-                                    <div class="subtotal">
-
-                                        <h4>Subtotal</h4>
-                                        <h5 class="item_total_price_class"></h5>
-
-                                    </div>
-
-                                    <!-- viewCart -->
-                                    <div class="viewCart">
-                                        <a href="/cart">View Cart</a>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                        </div>
+                        {% section 'right_sidebar' %}
 
                     </div>
 

@@ -190,7 +190,7 @@
 
                             <!-- item -->
                             <div class="CustomeInput">
-                                <button type="submit" name="add" id="AddToCart">Add to cart</button>
+                                <button type="submit" name="add" id="AddToCart" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">Add to cart</button>
                             </div>
 
                             <!-- item -->
@@ -228,31 +228,12 @@
     </div>
 
 </section>
+<script type="module">
+    import { cartRequestAdd } from '{{ "liquid-ajax-cart-v1.10.3.js" | asset_url }}'
 
-<script>
     $('#AddToCart').on('click', function (e) {
         e.preventDefault();
 
-        // console.log($('form[action$="/cart/add"]').serialize());
-
-        let addToCartForm = document.querySelector('form[action$="/cart/add"]');
-        let formData = new FormData(addToCartForm);
-        fetch(window.Shopify.routes.root + 'cart/add.js', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => {
-                cartAddedFunc();
-                $('#addToCartBtn').click()
-                return response.json();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-
-        // jQuery.post(window.Shopify.routes.root + 'cart/add.js', $('form[action$="/cart/add"]').serialize(), function (response) {
-        //     cartAddedFunc();
-        // });
-
+        cartRequestAdd({items: [{JSON.parse(JSON.stringify(join_pair))}]});
     });
 </script>

@@ -1,0 +1,123 @@
+
+<form action="/cart" method="post" novalidate>
+<div class="row" data-ajax-cart-section>
+
+    <!-- item -->
+    <div class="col-lg-8" data-ajax-cart-section-scroll>
+
+        <div class="header">
+            <h3>My cart</h3>
+        </div>
+        {% for item in cart.items %}
+        {% assign item_index = forloop.index %}
+        <!-- item -->
+        <div class="ViewCartPageItem">
+
+            <!-- left -->
+            <div class="left">
+
+                <div class="img">
+                    {{ item.image | img_url | img_tag }}
+                </div>
+
+            </div>
+
+            <div class="TextContent">
+
+                <!-- text -->
+                <div class="text">
+                    <h4>{{ item.product.title }}</h4>
+                    <p>{{ item.final_price | money }}</p>
+                    {% for variant in item.options_with_values %}
+                        <p>{{ variant.name }}: {{ variant.value }}</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Counter -->
+                <div class="Counter">
+
+                    <div class="input">
+                        <div class="minus">
+                            <a data-ajax-cart-request-button
+                               href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity={{ item.quantity | minus: 1 }}"><img
+                                        src="{{ 'minus.png' | asset_url }}" alt=""></a>
+                        </div>
+                        <input type="text"
+                               data-ajax-cart-quantity-input="{{ item_index }}"
+                               name="updates[]"
+                               value="{{ item.quantity }}">
+                        <div class="plus">
+                            <a data-ajax-cart-request-button
+                               href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity={{ item.quantity | plus: 1 }}"><img
+                                        src="{{ 'plus.png' | asset_url }}" alt=""></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Price -->
+                <div class="Price">
+                    <h4>{{ item.final_line_price | money }}</h4>
+                </div>
+
+                <!-- Close -->
+                <div class="Close">
+                    <a data-ajax-cart-request-button
+                       href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity=0">
+                        <img src="{{ 'close.png' | asset_url }}" alt="">
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+        <!-- EnterPromoCode -->
+        {% comment %}<div class="EnterPromoCode">{% endcomment %}
+{% comment %}{% endcomment %}
+            {% comment %}<div class="EnterPromoCodeItem">{% endcomment %}
+                {% comment %}<a href="" class="d_flex"> <img src="{{ 'price-tag.png' | asset_url }}" alt=""> Enter a promo code </a>{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+            {% comment %}<div class="EnterPromoCodeItem">{% endcomment %}
+                {% comment %}<a href="" class="d_flex"> <img src="{{ 'files.png' | asset_url }}" alt=""> Add a note </a>{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+{% comment %}{% endcomment %}
+        {% comment %}</div>{% endcomment %}
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="OrderSummery">
+
+            <h3>Order summary</h3>
+
+            <ul>
+
+                <li>
+                    <div class="left">
+                        <h5>Subtotal</h5>
+                        {% comment %}<button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Estimate Shipping</button>{% endcomment %}
+                    </div>
+                    <h5>{{ cart.items_subtotal_price | money }}</h5>
+                </li>
+
+                <li>
+                    <h6>Total</h6>
+                    <h6>{{ cart.total_price | money }}</h6>
+                </li>
+
+            </ul>
+
+            <div class="CheckOut">
+                <button type="submit" name="checkout">Checkout</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</form>

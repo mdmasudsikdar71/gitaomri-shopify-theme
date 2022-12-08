@@ -76,64 +76,14 @@
 
 {% include 'footer' %}
 
+<script type="application/json" data-ajax-cart-initial-state>{{ cart | json }}</script>
+
+<script type="module">
+  import '{{ "liquid-ajax-cart-v1.10.3.js" | asset_url }}';
+</script>
+
 <script>
   AOS.init();
-
-  var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
-          .then(response => response.json())
-          .then(data => {
-            $('.item-count-number').text(data.item_count)
-            $('.item_total_price_class').text("{{ " + data.total_price + " | t | money }}")
-            {% assign my_string = data.total_price %}
-            console.log(data.total_price, "{{ my_string | money }}")
-
-            return data
-          });
-
-
-  function cartAddedFunc() {
-    fetch(window.Shopify.routes.root + 'cart.js')
-            .then(response => response.json())
-            .then(data => {
-              $('.item-count-number').text(data.item_count)
-              $('.RightSideBarCart').fadeOut(800, function(){
-                $('.RightSideBarCart').html().fadeIn().delay(2000);
-              });
-
-
-              return data
-            });
-  }
-
-  function clearFromCart(id, quantity) {
-    console.log(id, quantity)
-    let formdata = new FormData();
-    formdata.append("id", id);
-    formdata.append("quantity", quantity);
-    fetch(window.Shopify.routes.root + 'cart/change.js', {
-      method: 'POST',
-      body: formdata
-    }).then(response => {
-      cartAddedFunc();
-      return response.json();
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-  }
-
-  function updateCart(type, id)
-  {
-    if(type == 'plus'){
-      $('.' + id).val(parseInt($('.' + id).val()) + 1)
-    } else {
-      $('.' + id).val(parseInt($('.' + id).val()) - 1)
-    }
-
-    clearFromCart(id, $('.' + id).val())
-  }
-
-
 </script>
 </body>
 </html>
