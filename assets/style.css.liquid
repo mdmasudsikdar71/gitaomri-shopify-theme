@@ -288,7 +288,8 @@ p{
     display: flex;
     position: relative;
     border-bottom: 1px solid #ddd;
-    padding: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .RightSideBarItem .text{
@@ -323,6 +324,7 @@ p{
 
 .RightSideBarCart {
     height: 64%;
+    padding: 30px;
     overflow-y: auto;
 }
 
@@ -2116,6 +2118,123 @@ button.PopupModelClose {
     width: 100%;
     padding: 10px;
     font-style: italic;
+}
+
+.Shop{
+    padding-top: 80px;
+}
+
+.Shop .header h2 {
+    font-family: raleway, sans-serif;
+    font-size: 50px;
+    line-height: 65px;
+    color: var(--main_color1);
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.Shop .header h2::after{
+    position: absolute;
+    content: '';
+    bottom: -15px;
+    left: 0;
+    width: 35px;
+    height: 3px;
+    background: var(--main_color1);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ShopSliderItem {
+    position: relative;
+    height: 740px;
+}
+
+.ShopSliderItem .ShopSliderImg img {
+    width: 100%;
+    height: 98%;
+}
+.minHeight .ShopSliderImg img{
+    height: 100%;
+}
+
+.ShopSliderImg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ShopSliderOverlay img{
+    width: 80%;
+}
+
+.ShopSliderOverlay .img{
+    position: relative;
+}
+
+.ShopSliderOverlay .text {
+    position: absolute;
+    top: 20%;
+    left: 73%;
+    z-index: 99;
+}
+
+.ShopSliderOverlay .text h4{
+    background: #151515;
+    color: var(--white_color);
+    font-size: 52px;
+    line-height: 60px;
+    font-weight: 700;
+    font-family: lato,sans-serif;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.SmallImg img{
+    width: 360px;
+    height: 445px;
+}
+
+.ShopSliderOverlay .SmallImg .text{
+    left: 63%;
+    top: 50%;
+}
+
+.ShopSliderOverlay .SmallImg .text h4{
+    font-family: lato-light, lato, sans-serif;
+    font-weight: 400;
+    background: #E2E7EB;
+    color: #058CFC;
+}
+
+.ShopSliderOverlay .SmallImg .text p{
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 40px;
+    font-family: lato-light, lato, sans-serif;
+    font-style: normal;
+    background: #E2E7EB;
+    color: #058CFC;
+    display: inline-block;
+}
+
+.LargeImg img{
+    width: 100%;
+    height: 100%;
+}
+
+.ShopSlider .swiper-button-next{
+    right: 65px !important;
+    color: var(--white_color);
+}
+
+.ShopSlider .swiper-button-prev{
+    left: 65px !important;
+    color: var(--white_color);
 }
 
 /* // Desktop */

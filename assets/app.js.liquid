@@ -1,5 +1,6 @@
-// Put your application javascript here
 $(function() {
+
+
     // Product Slider
     var swiper = new Swiper(".mySwiper", {
         loop: true,
@@ -25,12 +26,12 @@ $(function() {
         },
         pagination: {
             el: ".swiper-pagination",
-            clickable: true
+            clickable: true,
         },
         navigation: {
             nextEl: ".next",
-            prevEl: ".prev"
-        }
+            prevEl: ".prev",
+        },
     });
 
     // Single Product
@@ -46,10 +47,25 @@ $(function() {
         spaceBetween: 10,
         navigation: {
             nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            prevEl: ".swiper-button-prev"
         },
         thumbs: {
             swiper: swiper
+        },
+    });
+
+    // ShopSlider
+    var swiper = new Swiper(".ShopSlider", {
+        spaceBetween: 30,
+        effect: "fade",
+        autoplay: {
+            delay: 150000,
+            disableOnInteraction: false
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
         }
     });
+
 });

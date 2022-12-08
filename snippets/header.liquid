@@ -15,9 +15,9 @@
                         <a href="/">{{ 'logo.jpg' | asset_url | img_tag: 'Gita Omri' }}</a>
 
                         <div class="Bag">
-                            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <button type="button" id="addToCartBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                                 {{ 'shopping-bag.png' | asset_url | img_tag: 'Gita Omri' }}
-                                <span>0</span>
+                                <span class="item-count-number">0</span>
                             </button>
 
                         </div>
@@ -37,109 +37,32 @@
                                     <!-- product Item -->
                                     <div class="RightSideBarCart">
 
-                                        <!-- item -->
-                                        <div class="RightSideBarItem">
+                                        {% for item in cart.items %}
+                                            <div class="RightSideBarItem">
 
-                                            <div class="img">
-                                                <a href=""><img src="frontend_assets/images/img1.webp" alt=""></a>
-                                            </div>
+                                                <div class="img">
+                                                    <a href="{{ item.url }}"><img src="{{ item.image | img_url }}" width="80px" height="80px" alt=""></a>
+                                                </div>
 
-                                            <div class="text">
-                                                <h5>BOWTIE NECK</h5>
-                                                <h5>BLOUSE W/ PEPLUM</h5>
-                                                <p>$234.00</p>
+                                                <div class="text">
+                                                    <h5>{{ item.product.title }}</h5>
+                                                    {% comment %}<h5>BLOUSE W/ PEPLUM</h5>{% endcomment %}
+                                                    <p>{{ item.price | money }}</p>
 
-                                                <div class="input">
-                                                    <div class="minus"><img src="frontend_assets/images/minus.png" alt=""></div>
-                                                    <input type="text" name="" id="">
-                                                    <div class="plus"><img src="frontend_assets/images/plus.png" alt=""></div>
+                                                    <div class="input">
+                                                        <div class="minus" onclick="updateCart('minus', '{{ item.id }}')"><img src="{{ 'minus.png' | asset_url }}" alt=""></div>
+                                                        <input type="text" onchange="clearFromCart('{{ item.id }}', event.target.value)" class="{{ item.id }}" value="{{ item.quantity }}" id="">
+                                                        <div class="plus" onclick="updateCart('plus', '{{ item.id }}')"><img src="{{ 'plus.png' | asset_url }}" alt=""></div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="closeHover">
+                                                    <img src="{{ 'close.png' | asset_url }}" alt="">
                                                 </div>
 
                                             </div>
-
-                                            <div class="closeHover">
-                                                <img src="frontend_assets/images/close.png" alt="">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- item -->
-                                        <div class="RightSideBarItem">
-
-                                            <div class="img">
-                                                <a href=""><img src="frontend_assets/images/img2.webp" alt=""></a>
-                                            </div>
-
-                                            <div class="text">
-                                                <h5>BOWTIE NECK</h5>
-                                                <h5>BLOUSE W/ PEPLUM</h5>
-                                                <p>$234.00</p>
-
-                                                <div class="input">
-                                                    <div class="minus"><img src="frontend_assets/images/minus.png" alt=""></div>
-                                                    <input type="text" name="" id="">
-                                                    <div class="plus"><img src="frontend_assets/images/plus.png" alt=""></div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="closeHover">
-                                                <img src="frontend_assets/images/close.png" alt="">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- item -->
-                                        <div class="RightSideBarItem">
-
-                                            <div class="img">
-                                                <a href=""><img src="frontend_assets/images/img1.webp" alt=""></a>
-                                            </div>
-
-                                            <div class="text">
-                                                <h5>BOWTIE NECK</h5>
-                                                <h5>BLOUSE W/ PEPLUM</h5>
-                                                <p>$234.00</p>
-
-                                                <div class="input">
-                                                    <div class="minus"><img src="frontend_assets/images/minus.png" alt=""></div>
-                                                    <input type="text" name="" id="">
-                                                    <div class="plus"><img src="frontend_assets/images/plus.png" alt=""></div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="closeHover">
-                                                <img src="frontend_assets/images/close.png" alt="">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- item -->
-                                        <div class="RightSideBarItem">
-
-                                            <div class="img">
-                                                <a href=""><img src="frontend_assets/images/img2.webp" alt=""></a>
-                                            </div>
-
-                                            <div class="text">
-                                                <h5>BOWTIE NECK</h5>
-                                                <h5>BLOUSE W/ PEPLUM</h5>
-                                                <p>$234.00</p>
-
-                                                <div class="input">
-                                                    <div class="minus"><img src="frontend_assets/images/minus.png" alt=""></div>
-                                                    <input type="text" name="" id="">
-                                                    <div class="plus"><img src="frontend_assets/images/plus.png" alt=""></div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="closeHover">
-                                                <img src="frontend_assets/images/close.png" alt="">
-                                            </div>
-
-                                        </div>
+                                        {% endfor %}
 
                                     </div>
 
@@ -147,13 +70,13 @@
                                     <div class="subtotal">
 
                                         <h4>Subtotal</h4>
-                                        <h5>$1,185.00</h5>
+                                        <h5 class="item_total_price_class"></h5>
 
                                     </div>
 
                                     <!-- viewCart -->
                                     <div class="viewCart">
-                                        <a href="view_cart.html">View Cart</a>
+                                        <a href="/cart">View Cart</a>
                                     </div>
 
 
