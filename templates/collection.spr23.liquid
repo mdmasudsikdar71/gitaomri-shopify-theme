@@ -112,7 +112,7 @@
                         <div class="ModalContent">
 
                             <h3 id="product_title"></h3>
-                            <h4>$345.00</h4>
+                            <h4 id="product_price">$0.00</h4>
 
                             <form action="" method="post" class="ModalFrom">
 
@@ -148,7 +148,7 @@
 
                                     <label>Quantity</label>
 
-                                    <input type="number" name="" class="Quantity">
+                                    <input type="number" value="1" name="" class="Quantity">
 
                                 </div>
 
@@ -159,7 +159,7 @@
 
                                 <!-- item -->
                                 <div class="CustomeInput">
-                                    <a href="product_details.html">View More Details</a>
+                                    <a id="product_url" href="#">View More Details</a>
                                 </div>
 
                             </form>
@@ -181,8 +181,18 @@
 <script>
     function handleOption(handle) {
         jQuery.getJSON(window.Shopify.routes.root + 'products/' + handle + '.js', function(product) {
+            console.log(product)
             $('#product_title').text(product.title)
             $('#feature_image').attr('src', product.featured_image)
+            $('#product_url').attr('href', product.url)
+            if(product.price_varies) {
+                let price_min = parseFloat(product.price_min / 100).toFixed(2);
+                let price_max = parseFloat(product.price_max / 100).toFixed(2);
+                $('#product_price').text("$" + price_min + " - " + "$" + price_max)
+            } else {
+                let price = parseFloat(product.price / 100).toFixed(2);
+                $('#product_price').text("$" + price)
+            }
             $('#exampleModal').modal('show')
         });
     }
