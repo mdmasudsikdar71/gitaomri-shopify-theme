@@ -123,28 +123,32 @@
                     <div class="ModalContent">
 
                         <h3>{{ product.title }}</h3>
-                        <h4>{{ current_variant.price | money }}</h4>
+                        {% if product.price_varies %}
+                            <h4>{{ product.price_min | money }} - {{ product.price_max | money }}</h4>
+                        {% else %}
+                            <h4>{{ product.price | money }}</h4>
+                        {%endif%}
 
                         <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
 
-                                {% if product.options.size > 0 -%}
-                                    {% for option in product.options -%}
+                                {% if product.has_only_default_variant != true -%}
+                                    {% for option in product.options_with_values -%}
                                     <!-- item -->
                                     <div class="CustomeInput">
-                                        {% if option != "Color" %}
-                                            <label for="productSelect"> {{ option }}</label>
-                                            <select name="id" id="productSelect">
-                                                {% for value in product.variants %}
-                                                    <option value="{{ value.id }}">
-                                                        {{ value.title }}
+                                        {% if option.name != "Color" %}
+                                            <label> {{ option.name }}</label>
+                                            <select class="{{ option.name }}" name="{{ option.name }}" onchange="combineVariant()">
+                                                {% for value in option.values %}
+                                                    <option {% if option.selected_value == value %}selected{% endif %} value="{{ value }}">
+                                                        {{ value }}
                                                     </option>
                                                 {% endfor %}
                                             </select>
                                         {% else %}
-                                            <label> {{ option }}</label>
+                                            <label> {{ option.name }}</label>
                                             <div class="radioInput d_flex">
-                                                {% for value in product_option.values %}
-                                                    <input type="radio" {% if product_option.selected_value == value %}checked{% endif %} style="--main_color2: {{ value }};" class="product_color" name="color">
+                                                {% for value in option.values %}
+                                                    <input type="radio" value="{{ value }}" {% if option.selected_value == value %}checked{% endif %} style="--main_color2: {{ value }};" class="{{ option.name }}" name="{{ option.name }}" onclick="combineVariant()">
                                                 {% endfor %}
                                             </div>
                                         {% endif %}
@@ -152,39 +156,17 @@
                                     {% endfor %}
                                 {% endif %}
 
-
-
-                            <!-- item -->
-                            {% comment %}<div class="CustomeInput">{% endcomment %}
-{% comment %}{% endcomment %}
-                                {% comment %}<label>Color: <span>NAVY/GOLD</span></label>{% endcomment %}
-{% comment %}{% endcomment %}
-                                {% comment %}<div class="radioInput d_flex">{% endcomment %}
-                                    {% comment %}<input type="radio" class="blue" name="color">{% endcomment %}
-                                    {% comment %}<input type="radio" class="red" name="color">{% endcomment %}
-                                {% comment %}</div>{% endcomment %}
-{% comment %}{% endcomment %}
-                            {% comment %}</div>{% endcomment %}
-
-                            {% comment %}<!-- item -->{% endcomment %}
-                            {% comment %}<div class="CustomeInput">{% endcomment %}
-{% comment %}{% endcomment %}
-                                {% comment %}<label>SLEEVE LENGTH</label>{% endcomment %}
-{% comment %}{% endcomment %}
-                                {% comment %}<select name="">{% endcomment %}
-                                    {% comment %}<option value="">Select</option>{% endcomment %}
-                                    {% comment %}<option value="">Cap</option>{% endcomment %}
-                                    {% comment %}<option value="">Short</option>{% endcomment %}
-                                    {% comment %}<option value="">Long</option>{% endcomment %}
-                                {% comment %}</select>{% endcomment %}
-{% comment %}{% endcomment %}
-                            {% comment %}</div>{% endcomment %}
-
                             <!-- item -->
                             <div class="CustomeInput">
 
-                                <label for="Quantity">Quantity</label>
-                                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="Quantity">
+                                <select style="display: none" id="id">
+                                    {% for option in product.variants -%}
+                                        <option {% if option.selected %}selected{% endif %} value="{{ option.id }}">{{ option.title }}</option>
+                                    {% endfor %}
+                                </select>
+
+                                <label for="quantity">Quantity</label>
+                                <input type="number" id="quantity" value="1" min="1" class="Quantity">
 
                             </div>
 
@@ -228,12 +210,45 @@
     </div>
 
 </section>
+<script>
+    window.onload = combineVariant();
+
+    function combineVariant ()
+    {
+        let allData = JSON.parse(JSON.stringify($('#AddToCartForm').serializeArray()));
+
+        let items = []
+        allData.forEach((item, index)=>{
+            items.push(item.value)
+        })
+
+        let ItemsJoin = items.join(' / ');
+
+        console.log(ItemsJoin)
+
+        $("#id option:contains('" + ItemsJoin + "')").filter(function(i){
+                return $(this).text() == ItemsJoin;
+            }).prop("selected","selected")
+
+        // $("#id option:contains(" + ItemsJoin + ")").prop("selected","selected")
+
+        console.log($('#id').val())
+    }
+</script>
 <script type="module">
     import { cartRequestAdd } from '{{ "liquid-ajax-cart-v1.10.3.js" | asset_url }}'
 
     $('#AddToCart').on('click', function (e) {
         e.preventDefault();
 
-        cartRequestAdd({items: [{JSON.parse(JSON.stringify(join_pair))}]});
-    });
+        cartRequestAdd({
+            items: [
+                {
+                    id: $('#id').val(),
+                    quantity: $('#quantity').val()
+                }
+            ]
+        });
+
+    })
 </script>

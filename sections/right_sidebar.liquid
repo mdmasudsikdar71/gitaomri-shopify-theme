@@ -28,9 +28,8 @@
                         </div>
 
                         <div class="text">
-                            <h5>{{ item.product.title }}</h5>
-                            {% comment %}<h5>BLOUSE W/ PEPLUM</h5>{% endcomment %}
-                            <p>{{ item.final_price | money }}</p>
+                            <h5>{{ item.title }}</h5>
+                            <p>{{ item.final_line_price | money }}</p>
 
                             <div class="input">
                                 <div class="minus"><a data-ajax-cart-request-button
