@@ -54,7 +54,7 @@
                         {% endunless %}
                         {% endcomment %}
                         <div class="quickView">
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" onclick="handleOption('{{ product.handle }}')">
                                 Quick View
                             </button>
                         </div>
@@ -80,3 +80,110 @@
     </div>
 
 </section>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <!-- <div class="modal-header">
+
+            </div> -->
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <!-- ModalImg -->
+                    <div class="col-lg-6">
+
+                        <div class="ModalImg">
+                            <img src="" id="feature_image" alt="">
+                        </div>
+
+                    </div>
+
+                    <!-- ModalContent -->
+                    <div class="col-lg-6">
+
+                        <div class="ModalContent">
+
+                            <h3 id="product_title"></h3>
+                            <h4>$345.00</h4>
+
+                            <form action="" method="post" class="ModalFrom">
+
+                                <!-- item -->
+                                <div class="CustomeInput">
+
+                                    <label>Color: <span>NAVY/GOLD</span></label>
+
+                                    <div class="radioInput d_flex">
+                                        <input type="radio" class="blue" name="color">
+                                        <input type="radio" class="red" name="color">
+                                    </div>
+
+                                </div>
+
+                                <!-- item -->
+                                <div class="CustomeInput">
+
+                                    <label>Size</label>
+
+                                    <select name="">
+                                        <option value="">Select</option>
+                                        <option value="">0</option>
+                                        <option value="">2</option>
+                                        <option value="">4</option>
+                                        <option value="">6</option>
+                                    </select>
+
+                                </div>
+
+                                <!-- item -->
+                                <div class="CustomeInput">
+
+                                    <label>Quantity</label>
+
+                                    <input type="number" name="" class="Quantity">
+
+                                </div>
+
+                                <!-- item -->
+                                <div class="CustomeInput">
+                                    <button type="submit">Add to Cart</button>
+                                </div>
+
+                                <!-- item -->
+                                <div class="CustomeInput">
+                                    <a href="product_details.html">View More Details</a>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function handleOption(handle) {
+        jQuery.getJSON(window.Shopify.routes.root + 'products/' + handle + '.js', function(product) {
+            $('#product_title').text(product.title)
+            $('#feature_image').attr('src', product.featured_image)
+            $('#exampleModal').modal('show')
+        });
+    }
+</script>
