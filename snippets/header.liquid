@@ -37,13 +37,14 @@
 
                                         {% for link in linklists.main-menu.links %}
                                             {% assign child_list_handle = link.title | handleize %}
+                                            {%- assign page_url = content_for_header | split:'"pageurl":"' | last | split:'"' | first | split: request.host | last | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&'  -%}
                                             {% if linklists[child_list_handle].links != blank %}
                                             <li>
-                                                <a href="{{ link.url }}">{{ link.title }}</a>
+                                                <a class="{% if page_url == '/collections' or page_url == '/collections/spr23' or page_url == '/collections/omriessentials' %}active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
                                                 <ul class="subMenu">
                                                     {% for childlink in linklists[child_list_handle].links %}
                                                     <li>
-                                                        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                                        <a class="{% if childlink.url == page_url %}active{% endif %}" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
                                                     </li>
                                                     {% endfor %}
                                                 </ul>
@@ -53,7 +54,7 @@
                                                     {% if link.url == "https://runway360.cfda.com/designers/gita-omri-2" %}
                                                         <a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
                                                     {% else %}
-                                                        <a href="{{ link.url }}">{{ link.title }}</a>
+                                                        <a class="{% if link.url == page_url %}active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
                                                     {% endif %}
                                                 </li>
                                             {% endif %}

@@ -53,8 +53,11 @@
                     </div>
                 {% endfor %}
 
+                {% if cart.item_count == 0 %}
+                    <p style="text-align: center; font-family: lato-light, lato, sans-serif;">Cart is empty</p>
+                {% endif %}
             </div>
-
+            {% if cart.item_count > 0 %}
             <!-- subtotal -->
             <div class="subtotal">
 
@@ -68,6 +71,7 @@
                 <a href="/cart">View Cart</a>
             </div>
 
+            {% endif %}
 
         </div>
 

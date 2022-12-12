@@ -44,7 +44,7 @@
                 <div class="SliderItem">
 
                     <!-- img -->
-                    <div class="img">
+                    <div class="spring_page_img img">
                         <a href="{{ product.url | within: collection }}">
                             {{ product.featured_image.src | img_url: '361x361' | img_tag: 'Gita Omri' }}
                         </a>
@@ -68,7 +68,7 @@
                         </div>
                     </a>
 
-                    <a href="" class="addCart">Add to Cart</a>
+                    <a href="JavaScript:void(0)" class="addCart" onclick="handleOption('{{ product.handle }}')">Add to Cart</a>
 
                 </div>
 
@@ -95,80 +95,59 @@
 
             <div class="modal-body">
 
-                <div class="row">
+                <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+                    <div class="row">
 
-                    <!-- ModalImg -->
-                    <div class="col-lg-6">
+                        <!-- ModalImg -->
+                        <div class="col-lg-6">
 
-                        <div class="ModalImg">
-                            <img src="" id="feature_image" alt="">
+                            <div class="ModalImg">
+                                <img src="" id="feature_image" alt="">
+                            </div>
+
                         </div>
 
-                    </div>
+                        <!-- ModalContent -->
+                        <div class="col-lg-6">
 
-                    <!-- ModalContent -->
-                    <div class="col-lg-6">
+                            <div class="ModalContent">
 
-                        <div class="ModalContent">
+                                <h3 id="product_title"></h3>
+                                <h4 id="product_price">$0.00</h4>
 
-                            <h3 id="product_title"></h3>
-                            <h4 id="product_price">$0.00</h4>
+                                <form action="" method="post" class="ModalFrom">
 
-                            <form action="" method="post" class="ModalFrom">
+                                    <!-- item -->
+                                    <div id="variantCustomInput"></div>
 
-                                <!-- item -->
-                                <div class="CustomeInput">
+                                    <!-- item -->
+                                    <div class="CustomeInput">
 
-                                    <label>Color: <span>NAVY/GOLD</span></label>
+                                        <select style="display: none;" id="id"></select>
 
-                                    <div class="radioInput d_flex">
-                                        <input type="radio" class="blue" name="color">
-                                        <input type="radio" class="red" name="color">
+                                        <label for="quantity">Quantity</label>
+                                        <input type="number" id="quantity" value="1" min="1" class="Quantity">
+
                                     </div>
 
-                                </div>
+                                    <!-- item -->
+                                    <div class="CustomeInput">
+                                        <button type="submit" data-bs-dismiss="modal" name="add" id="AddToCart" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">Add to Cart</button>
+                                    </div>
 
-                                <!-- item -->
-                                <div class="CustomeInput">
+                                    <!-- item -->
+                                    <div class="CustomeInput">
+                                        <a id="product_url" href="#">View More Details</a>
+                                    </div>
 
-                                    <label>Size</label>
+                                </form>
 
-                                    <select name="">
-                                        <option value="">Select</option>
-                                        <option value="">0</option>
-                                        <option value="">2</option>
-                                        <option value="">4</option>
-                                        <option value="">6</option>
-                                    </select>
-
-                                </div>
-
-                                <!-- item -->
-                                <div class="CustomeInput">
-
-                                    <label>Quantity</label>
-
-                                    <input type="number" value="1" name="" class="Quantity">
-
-                                </div>
-
-                                <!-- item -->
-                                <div class="CustomeInput">
-                                    <button type="submit">Add to Cart</button>
-                                </div>
-
-                                <!-- item -->
-                                <div class="CustomeInput">
-                                    <a id="product_url" href="#">View More Details</a>
-                                </div>
-
-                            </form>
+                            </div>
 
                         </div>
 
                     </div>
-
-                </div>
+                </form>
 
             </div>
 
@@ -185,6 +164,7 @@
             $('#product_title').text(product.title)
             $('#feature_image').attr('src', product.featured_image)
             $('#product_url').attr('href', product.url)
+            $('#quantity').val(1)
             if(product.price_varies) {
                 let price_min = parseFloat(product.price_min / 100).toFixed(2);
                 let price_max = parseFloat(product.price_max / 100).toFixed(2);
@@ -193,7 +173,86 @@
                 let price = parseFloat(product.price / 100).toFixed(2);
                 $('#product_price').text("$" + price)
             }
+            let html = '';
+            product.options.forEach(function(item) {
+                html += '<div class="CustomeInput">';
+                if(item.name == 'Color') {
+                    html += '<label>'+ item.name +'</label>';
+                    html += '<div class="radioInput d_flex">';
+                    item.values.forEach(function (value, index) {
+                        if(index == 0) {
+                            html += '<input type="radio" value="'+ value +'" style="--main_color2: ' + value + ';" class="'+ item.name +'" name="'+ item.name +'" onclick="combineVariant()" checked>';
+                        } else {
+                            html += '<input type="radio" value="'+ value +'" style="--main_color2: ' + value + ';" class="'+ item.name +'" name="'+ item.name +'" onclick="combineVariant()">';
+                        }
+                    })
+                    html += '</div>';
+                } else {
+                    html += '<label>'+ item.name +'</label>';
+                    html += '<select class="'+ item.name +'" name="'+ item.name +'" onchange="combineVariant()">';
+                    item.values.forEach(function (value, index) {
+                        if(index == 0) {
+                            html += '<option value="' + value + '" selected>' + value + '</option>';
+                        } else {
+                            html += '<option value="' + value + '">' + value + '</option>';
+                        }
+                    })
+                    html += '</select>';
+                }
+                html += '</div>';
+            });
+
+            $('#variantCustomInput').html(html);
+
+            let variants = '';
+            product.variants.forEach(function(item) {
+                variants += '<option value="' + item.id + '">' + item.title + '</option>';
+            });
+
+            $('#id').html(variants);
+
+            combineVariant();
+
             $('#exampleModal').modal('show')
         });
     }
+
+    function combineVariant ()
+    {
+        let allData = JSON.parse(JSON.stringify($('#AddToCartForm').serializeArray()));
+
+        let items = []
+        allData.forEach((item, index)=>{
+            items.push(item.value)
+        })
+
+        let ItemsJoin = items.join(' / ');
+
+        // console.log(ItemsJoin)
+
+        $("#id option:contains('" + ItemsJoin + "')").filter(function(i){
+            return $(this).text() == ItemsJoin;
+        }).prop("selected","selected")
+
+        // $("#id option:contains(" + ItemsJoin + ")").prop("selected","selected")
+
+        // console.log($('#id').val())
+    }
+</script>
+<script type="module">
+    import { cartRequestAdd } from '{{ "liquid-ajax-cart-v1.10.3.js" | asset_url }}'
+
+    $('#AddToCart').on('click', function (e) {
+        e.preventDefault();
+
+        cartRequestAdd({
+            items: [
+                {
+                    id: $('#id').val(),
+                    quantity: $('#quantity').val()
+                }
+            ]
+        });
+
+    })
 </script>

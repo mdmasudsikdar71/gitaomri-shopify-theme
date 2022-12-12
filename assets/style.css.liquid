@@ -69,10 +69,14 @@ a {
     color: var(--text_color);
     transition: all linear .2s;
     display: inline-block;
-    font-family: 'Lato', sans-serif;
+    font-family: lato-light, lato, sans-serif;
 }
 
 a:hover{
+    color: var(--hover_color);
+}
+
+a.active{
     color: var(--hover_color);
 }
 
@@ -290,6 +294,7 @@ p{
     border-bottom: 1px solid #ddd;
     padding-bottom: 20px;
     padding-top: 20px;
+    padding-right: 40px;
 }
 
 .RightSideBarItem .text{
@@ -298,13 +303,12 @@ p{
 
 .RightSideBarItem .closeHover{
     position: absolute;
-    top: 30px;
-    right: 30px;
+    right: 0;
     width: 18px;
     height: 18px;
     border-radius: 50%;
     background: var(--white_color);
-    border: 1px solid #DDD;
+    {% comment %}border: 1px solid #DDD;{% endcomment %}
     padding: 5px;
     display: flex;
     align-items: center;
@@ -479,6 +483,16 @@ p{
 .SliderItem img{
     height: 100%;
     width: 100%;
+}
+
+.SliderItem .homepage_img img{
+    height: 441px;
+    width: 441px;
+}
+
+.SliderItem .spring_page_img img{
+    width: 479px;
+    height: 359px;
 }
 
 .SliderItem .text{
@@ -670,7 +684,8 @@ p{
 }
 
 .CustomeInput button{
-    background: var(--bg_color);
+    {% comment %}background: var(--bg_color);{% endcomment %}
+    background: #FAD94E;
     padding: 10px 30px;
     width: 100%;
     text-align: center;
@@ -809,14 +824,14 @@ input[type='radio']:checked:after {
     font-weight: 300;
     line-height: 60px;
     margin-bottom: 40px;
-    font-family: 'Lato', sans-serif;
+    font-family: lato-light, lato, sans-serif;
 }
 
 .SpringHeaderContent p{
     margin-top: 10px;
     font-weight: 300;
     line-height: 26px;
-    font-family: 'Lato', sans-serif;
+    font-family: lato-light, lato, sans-serif;
     font-size: 16px;
 }
 
@@ -844,7 +859,7 @@ input[type='radio']:checked:after {
 }
 
 .Spring .SliderItem .addCart{
-    background: var(--hover_color);
+    background: rgb(254, 241, 187);
     margin-top: 20px;
     padding: 10px;
     font-size: 16px;
@@ -877,7 +892,7 @@ input[type='radio']:checked:after {
 
 .OmriEssential .Header h2{
     font-weight: 300;
-    font-family: 'Lato', sans-serif;
+    font-family: lato-light, lato, sans-serif;
 }
 
 .OmriEssential .Header h6{
@@ -886,7 +901,7 @@ input[type='radio']:checked:after {
     font-weight: 300;
     color: var(--main_color1);
     padding: 10px 0;
-    font-family: 'Lato', sans-serif;
+    font-family: lato-light, lato, sans-serif;
 }
 
 .OmriEssential .Header h4{
@@ -894,7 +909,7 @@ input[type='radio']:checked:after {
     line-height: 30px;
     color: var(--text_color);
     font-weight: 300;
-    font-family: 'Lato', sans-serif;
+    font-family: lato-light, lato, sans-serif;
 }
 
 
@@ -1111,7 +1126,7 @@ input[type='radio']:checked:after {
 .AboutDetailsContent h2{
     font-weight: 300;
     color: var(--main_color1);
-    font-family: 'Lato', sans-serif;
+    font-family: lato-light, lato, sans-serif;
     font-size: 35px;
     line-height: 45px;
     margin-top: 10px;
@@ -1151,6 +1166,14 @@ input[type='radio']:checked:after {
 }
 
 .MoreAboutContent p{
+    font-weight: 400;
+    font-size: 16px;
+    font-style: normal;
+    margin-top: 20px;
+    font-family: lato-light, lato, sans-serif;
+}
+
+.MoreAboutContent .text{
     font-weight: 400;
     font-size: 16px;
     font-style: normal;
@@ -1271,9 +1294,15 @@ input[type='radio']:checked:after {
     font-family: "times new roman", times, serif;
 }
 
+.ProductDetails .Header h6 a:hover {
+    color: var(--text_color);
+    font-weight: 500;
+}
+
 .ProductDetails .Header span{
     color: var(--main_color1);
     font-weight: 500;
+    font-family: "times new roman", times, serif;
 }
 
 .ProductDetailsContent{
