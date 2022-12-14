@@ -8,6 +8,7 @@
         <div class="header">
             <h3>My cart</h3>
         </div>
+        {% if cart.item_count > 0 %}
         {% for item in cart.items %}
         {% assign item_index = forloop.index %}
         <!-- item -->
@@ -72,18 +73,6 @@
 
         </div>
         {% endfor %}
-        <!-- EnterPromoCode -->
-        {% comment %}<div class="EnterPromoCode">{% endcomment %}
-{% comment %}{% endcomment %}
-            {% comment %}<div class="EnterPromoCodeItem">{% endcomment %}
-                {% comment %}<a href="" class="d_flex"> <img src="{{ 'price-tag.png' | asset_url }}" alt=""> Enter a promo code </a>{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-{% comment %}{% endcomment %}
-            {% comment %}<div class="EnterPromoCodeItem">{% endcomment %}
-                {% comment %}<a href="" class="d_flex"> <img src="{{ 'files.png' | asset_url }}" alt=""> Add a note </a>{% endcomment %}
-            {% comment %}</div>{% endcomment %}
-{% comment %}{% endcomment %}
-        {% comment %}</div>{% endcomment %}
 
     </div>
 
@@ -117,6 +106,10 @@
         </div>
 
     </div>
+    {% else %}
+        <h4 style="text-align: center; font-weight: 600; font-family: lato-light, lato, sans-serif;">Cart is empty</h4>
+        <p style="text-align: center; font-family: lato-light, lato, sans-serif;"><a href="/" style=" text-decoration: underline">Continue Shopping...</a></p>
+    {% endif %}
 
 </div>
 

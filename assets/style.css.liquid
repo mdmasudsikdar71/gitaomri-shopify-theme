@@ -144,6 +144,14 @@ p{
     padding: 5px 40px;
 }
 
+.mobile_checkout {
+    display: none;
+}
+
+.pc_checkout {
+    display: block;
+}
+
 .MenuItem a{
     text-transform: uppercase;
     font-family: lato-light, lato, sans-serif;
@@ -393,24 +401,39 @@ p{
     text-align: center;
 }
 
-.BannerContent h1{
+.BannerContent h2{
     max-width: 50%;
     margin: 0 auto;
     text-align: center;
 }
 
-.BannerContent h1 span{
-    font-size: 110px;
+.BannerContent h2 span{
+    color: #A70757;
+    font-weight: 700;
+    letter-spacing: normal;
+    font-family: "playfair display", serif;
 }
 
-.BannerContent h3 {
-    color: #A70757;
-    margin-top: 30px;
+.BannerContent h2 span.h2_percent {
+    font-size: 119px;
+    line-height: 69px;
+}
+
+.BannerContent h2 span.off_monday{
+    font-size: 77px;
+    line-height: 69px;
+}
+
+.BannerContent h2 span.code{
+    font-size: 18px;
+    line-height: 69px;
     font-family: raleway, sans-serif;
 }
 
-.BannerContent span{
-    font-size: 18px;
+.BannerContent h2 span.code_coupon{
+    font-size: 29px;
+    line-height: 69px;
+    font-family: raleway, sans-serif;
 }
 
 .BannerContent a {
@@ -436,11 +459,11 @@ p{
 
 .BanenrImg{
     width: 50%;
-    height: 100%;
 }
 
 .BanenrImg img{
     width: 100%;
+    height: 880px;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
@@ -487,7 +510,8 @@ p{
 
 .SliderItem .homepage_img img{
     height: 441px;
-    width: 441px;
+    {% comment %}width: 441px;{% endcomment %}
+    width: 100%;
 }
 
 .SliderItem .spring_page_img img{
@@ -1308,7 +1332,14 @@ input[type='radio']:checked:after {
 
 .ProductDetailsContent{
     margin-top: 50px;
-    padding: 0 100px;
+}
+
+.ProductDetailsImg .pc_textItem {
+    display: block;
+}
+
+.ModalContent .mobile_textItem {
+    display: none;
 }
 
 .ProductDetailsContent .textItem {
@@ -1324,9 +1355,28 @@ input[type='radio']:checked:after {
 }
 
 .ProductDetails .Header {
-    padding: 0 100px;
+    justify-content: space-between;
 }
 
+.ProductDetails .right button{
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--main_color1);
+    font-style: italic;
+    background: transparent;
+}
+
+.ProductDetails .right button svg{
+    margin-right: 5px;
+}
+
+.ProductDetails .right button.prev{
+    padding-right: 5px;
+}
+
+.ProductDetails .right button.next{
+    padding-left: 5px;
+}
 
 /* Slider */
 
@@ -1450,7 +1500,7 @@ input[type='radio']:checked:after {
 }
 
 .ViewCartPageItem p{
-    margin-top: 0px;
+    margin-top: 0;
     color: var(--main_color2);
 }
 
@@ -1719,8 +1769,7 @@ button.PopupModelClose {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 535px;
-    height: 413px;
+    max-width: 535px;
     padding: 30px;
 }
 
@@ -1768,6 +1817,7 @@ button.PopupModelClose {
     border: 0;
     border-bottom: 1px solid var(--main_color1);
     padding: 0;
+    cursor: text;
 }
 
 .LoadItem .CustomeInput label {
@@ -2269,15 +2319,80 @@ button.PopupModelClose {
     color: var(--white_color);
 }
 
-/* // Desktop */
-@media screen and (min-width: 1440px) {
 
-
-
+@font-face {
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 400;
+    font-display: block;
+    src: url("raleway400.woff2") format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 700;
+    font-display: block;
+    src: url("raleway700.woff2") format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+    font-display: block;
+    font-family: "Lato-Light";
+    src: url("latolight1.woff2") format("woff2"),
+    url("latolight2.woff") format("woff"),
+    url("latolight3.ttf") format("truetype");
+}
+@font-face {
+    font-display: block;
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Lato Italic'), local('Lato-Italic'), url("lato400.woff2") format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+    font-display: block;
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("lato700.woff2") format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* // Laptop */
+@font-face {
+    font-display: block;
+    font-family: "Lato-Light";
+    src: url("latolight1.woff2") format("woff2"),
+    url("latolight2.woff") format("woff"),
+    url("latolight3.ttf") format("truetype");
+}
+@font-face {
+    font-display: block;
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Lato Italic'), local('Lato-Italic'), url("lato400.woff2") format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+    font-display: block;
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("lato700.woff2") format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @media screen and (max-width: 1439px) and (min-width: 1024px) {
+
+    .ProductDetailsImg .pc_textItem {
+        display: block;
+    }
+
+    .ModalContent .mobile_textItem {
+        display: none;
+    }
 
     .container {
         max-width: 960px;
@@ -2285,17 +2400,19 @@ button.PopupModelClose {
     .MenuItem ul li {
         padding: 5px 30px;
     }
-    .BannerContent h1 {
+
+    .BannerContent h2 {
         max-width: 80%;
         font-size: 60px;
         line-height: 60px;
     }
+
     .BannerContent {
-        padding: 0px 0;
+        padding: 0 0;
         padding-top: 80px;
     }
     .BannerContent a {
-        margin-top: 50px;
+        margin-top: 20px;
     }
     .FooterItem ul li a {
         font-size: 14px;
@@ -2396,11 +2513,23 @@ button.PopupModelClose {
         font-size: 20px;
         line-height: 30px;
     }
-
 }
 
 /* // Tablet */
 @media screen and (max-width: 1023px) and (min-width: 768px) {
+
+    .ProductDetailsImg .pc_textItem {
+        display: none;
+    }
+
+    .ModalContent .mobile_textItem {
+        display: block;
+    }
+
+    .container {
+        max-width: 90%;
+        margin: 0 auto;
+    }
 
     .MobileMenu{
         display: block;
@@ -2431,75 +2560,839 @@ button.PopupModelClose {
         top: 30px;
     }
 
+    .MobileMenuPop .modal-content {
+        height: 100%;
+        background: #000;
+    }
 
+    .MobileMenuPop .modal-dialog{
+        padding: 0;
+        margin: 0;
+    }
+
+    .MobileMenuPop .modal-dialog .modal-body {
+        padding: 100px;
+        height: 100%;
+        justify-items: center;
+        position: relative;
+    }
+
+    .MobileMunu {
+        text-align: center;
+    }
+
+    .mobile_checkout {
+        display: block;
+    }
+
+    .pc_checkout {
+        display: none;
+    }
+
+    .MobileMunu li{
+        width: 100%;
+        border-bottom: 1px solid var(--white_color);
+        position: relative;
+    }
+
+    .MobileMunu li a{
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--white_color);
+        font-style: italic;
+        text-transform: uppercase;
+        padding: 20px;
+        font-family: "times new roman", times, serif;
+        letter-spacing: 2px;
+        display: inline-block;
+    }
+
+    .MobileMunu .dropdown-menu{
+        position: unset !important;
+        transform: unset !important;
+        padding: 0;
+        margin: 0;
+        background: #000;
+        text-align: center;
+    }
+
+    .MobileMunu .dropdown-toggle svg{
+        color: var(--white_color);
+    }
+
+    .MobileMenuPop  .modal-dialog .btn-close{
+        color: var(--white_color);
+        font-size: 30px;
+        opacity: 1;
+    }
+
+    button.MobileMenuIconBtn {
+        background: #000;
+        color: #FFF;
+        padding: 15px 25px;
+        font-size: 34px;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        right: 50px;
+        transform: translateY(-50%);
+    }
+    .Logo {
+        position: relative;
+    }
+    .Banner {
+        display: block;
+    }
+    .BannerContent {
+        width: 100%;
+    }
+    .BannerContent h1 {
+        max-width: 90%;
+    }
+    .BannerContent h3 {
+        font-size: 40px;
+    }
+    .BannerContent a {
+        font-size: 24px;
+        margin-top: 30px;
+        border-radius: 30px;
+        padding: 15px 40px;
+    }
+    .BanenrImg {
+        width: 100%;
+    }
+    .Footer li {
+        padding: 10px 15px;
+    }
+    .DesktopViewCart{
+        display: block;
+    }
+    .MobileViewCart {
+        display: block;
+        margin-bottom: 50px;
+    }
+    .OrderSummery .CheckOut a {
+        padding: 20px;
+        font-size: 20px;
+    }
+    .Paypal a {
+        padding: 20px;
+    }
+    .ViewCartPage h3 {
+        font-size: 26px;
+        margin-top: 30px;
+    }
+    .TextContent {
+        display: block;
+        width: 80%;
+        position: relative;
+    }
+    .ViewCartPageItem img {
+        height: auto;
+        width: 100%;
+    }
+    .ViewCartPageItem .left {
+        width: 20%;
+        margin-right: 30px;
+    }
+    .ViewCartPageItem h4 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 20px;
+    }
+    .ViewCartPageItem p {
+        font-size: 24px;
+        line-height: 40px;
+    }
+    .TextContent .text {
+        width: 80%;
+    }
+    .ViewCartPageItem .Price h4 {
+        font-size: 24px;
+        line-height: 35px;
+        margin-top: 10px;
+    }
+    .ViewCartPageItem .Counter {
+        margin-top: 20px;
+    }
+    .ViewCartPageItem .Close img {
+        height: 14px;
+        width: auto;
+    }
+    .ViewCartPageItem .Close {
+        position: absolute;
+        top: 0;
+        right: 0px;
+    }
+    .EnterPromoCodeItem a {
+        font-size: 26px;
+        line-height: 35px;
+    }
+    .EnterPromoCodeItem {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid #ddd;
+    }
+    .EnterPromoCodeItem:first-child{
+        border-top: 0;
+        padding-top: 0;
+    }
+    .ViewCartPage h3 {
+        display: none;
+    }
+    .OrderSummery li h5 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 30px;
+    }
+    .OrderSummery li button {
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 30px;
+    }
+    .OrderSummery li h6 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .Secure h6 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .Secure {
+        margin-top: 30px;
+    }
+    .SpringHeaderImg img {
+        width: 100%;
+        height: auto;
+    }
+    .SpringHeaderContent {
+        margin-top: 50px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .SpringHeaderContent p {
+        margin-top: 10px;
+        line-height: 40px;
+        font-size: 20px;
+    }
+    .Spring .SliderItem .addCart {
+        opacity: 1;
+        visibility: visible;
+    }
+    .SliderItem h3 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .SliderItem p {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .MissionContent {
+        margin-top: 10px;
+        letter-spacing:normal;
+    }
+    .MissionContent p {
+        font-size: 16px;
+        padding-right: 0;
+    }
+    .Mission .container{
+        max-width: 90%;
+    }
+    .AboutDetailsImg {
+        text-align: center;
+        margin-right: 0;
+    }
+    .AboutDetails {
+        padding: 50px 0;
+    }
+    .AboutDetailsImg img {
+        height: auto;
+        width: 100%;
+    }
+    .AboutDetailsContent {
+        text-align: center;
+    }
+    .AboutDetailsContent h2 {
+        font-size: 40px;
+        line-height: 50px;
+        margin-top: 30px;
+    }
+    .AboutDetailsContent p {
+        margin-top: 25px;
+        font-size: 35px;
+        line-height: 55px;
+        padding-right: 0;
+    }
+    .MoreAboutContent h4 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .MoreAboutContent p {
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 40px;
+    }
+    .MoreAboutContent a {
+        font-size: 25px;
+        line-height: 40px;
+        padding: 20px;
+    }
+    .BlogItem {
+        margin-bottom: 30px;
+    }
+    .BlogPart .overlay .header a span {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .BlogPart .overlay .header ul li {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .BlogPart .overlay .header {
+        height: 80%;
+    }
+    .commentPart span {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .BlogSingleContent .header img {
+        height: 50px;
+        width: 50px;
+    }
+    .BlogSingleContent .header a {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .BlogSingleContent .header li {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .BlogSingleContent .header li::after {
+        top: 11px;
+    }
+    .BlogSingleContent h3 {
+        font-size: 35px;
+        list-style: 45px;
+        margin-top: 30px;
+    }
+    .BlogSingleContent span {
+        font-size: 18px;
+        list-style: 28px;
+    }
+    .BlogSingleContent p {
+        font-size: 25px;
+        line-height: 40px;
+    }
+    .BlogSingleContent a {
+        font-size: 25px;
+        line-height: 40px;
+    }
+    .RecentPostItem img {
+        height: auto;
+        width: 100%;
+        object-fit: unset;
+    }
+    .RecentPostItem {
+        margin-bottom: 30px;
+    }
 }
 
 /* // Mobile */
 @media screen and (max-width: 767px) {
 
-}
+    .ProductDetailsImg .pc_textItem {
+        display: none;
+    }
+
+    .ModalContent .mobile_textItem {
+        display: block;
+    }
+
+    .container {
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .mobile_checkout {
+        display: block;
+    }
+
+    .pc_checkout {
+        display: none;
+    }
+
+    .ViewCartPageItem .Counter {
+        width: 50%;
+    }
+
+    .MobileMenu{
+        display: block;
+        padding: 20px 0;
+    }
+    .DesktopMenu{
+        display: none;
+    }
+    .logo{
+        text-align: center;
+    }
+    .logo img {
+        height: 100px;
+    }
+    .Bag {
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: unset;
+        text-align: center;
+    }
+    .Bag img {
+        height: 60px;
+    }
+    .Bag span {
+        font-size: 22px;
+        line-height: 25px;
+        top: 30px;
+    }
+
+    .MobileMenuPop .modal-content {
+        height: 100%;
+        background: #000;
+    }
+
+    .MobileMenuPop .modal-dialog{
+        padding: 0;
+        margin: 0;
+    }
+
+    .MobileMenuPop .modal-dialog .modal-body {
+        padding: 40px;
+        padding-top: 150px;
+        height: 100%;
+        justify-items: center;
+        position: relative;
+    }
+
+    .MobileMunu {
+        text-align: center;
+    }
+
+    .MobileMunu li{
+        width: 100%;
+        border-bottom: 1px solid var(--white_color);
+        position: relative;
+    }
+
+    .ProductDetails .Header{
+        display: none;
+    }
+
+    .MobileMunu li a{
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--white_color);
+        font-style: italic;
+        text-transform: uppercase;
+        padding: 20px;
+        font-family: "times new roman", times, serif;
+        letter-spacing: 2px;
+        display: inline-block;
+    }
+
+    .MobileMunu .dropdown-menu{
+        position: unset !important;
+        transform: unset !important;
+        padding: 0;
+        margin: 0;
+        background: #000;
+        text-align: center;
+    }
+
+    .MobileMunu .dropdown-toggle svg{
+        color: var(--white_color);
+    }
+
+    .MobileMenuPop  .modal-dialog .btn-close{
+        color: var(--white_color);
+        font-size: 30px;
+        opacity: 1;
+    }
+
+    button.MobileMenuIconBtn {
+        background: #000;
+        color: #FFF;
+        padding: 12px 20px;
+        font-size: 22px;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+    .Logo {
+        position: relative;
+    }
+    .Banner {
+        display: block;
+    }
+    .BannerContent {
+        width: 100%;
+        padding: 30px 0;
+    }
+
+    .BannerContent h2 {
+        max-width: 90%;
+        font-style: normal;
+    }
+
+    .BannerContent h2 span{
+        color: #A70757;
+        font-weight: 700;
+        letter-spacing: normal;
+        font-family: "playfair display", serif;
+    }
+
+    .BannerContent h2 span.h2_percent, .BannerContent h2 span.off_monday{
+        font-size: 26px;
+        line-height: 23px;
+    }
+
+    .BannerContent h2 span.code{
+        font-size: 11px;
+        line-height: 23px;
+        font-family: raleway, sans-serif;
+    }
+
+    .BannerContent h2 span.code_coupon{
+        font-size: 16px;
+        line-height: 23px;
+        font-family: raleway, sans-serif;
+    }
+
+    .BannerContent a {
+        margin-top: 30px;
+        padding: 10px 30px;
+        font-family: proxima-n-w01-reg,sans-serif;
+        font-size: 12px;
+    }
+    .BanenrImg {
+        width: 100%;
+    }
+    .BanenrImg img{
+        height: 320px;
+    }
+    .Footer li {
+        padding: 10px 15px;
+    }
+    .DesktopViewCart{
+        display: block;
+    }
+    .MobileViewCart {
+        display: block;
+        margin-bottom: 50px;
+    }
+    .OrderSummery .CheckOut a {
+        padding: 20px;
+        font-size: 20px;
+    }
+    .Paypal a {
+        padding: 20px;
+    }
+    .ViewCartPage h3 {
+        font-size: 26px;
+        margin-top: 30px;
+    }
+    .TextContent {
+        display: block;
+        width: 80%;
+        position: relative;
+    }
+    .ViewCartPageItem img {
+        height: auto;
+        width: 100%;
+    }
+    .ViewCartPageItem .left {
+        width: 20%;
+        margin-right: 30px;
+    }
+    .ViewCartPageItem h4 {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+    .ViewCartPageItem p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .ProductDetailsImg .ProductSwiper {
+        display: none;
+    }
+    .TextContent .text {
+        width: 80%;
+    }
+    .ViewCartPageItem .Price h4 {
+        font-size: 24px;
+        line-height: 35px;
+        margin-top: 10px;
+    }
+    .ViewCartPageItem .Counter {
+        margin-top: 20px;
+    }
+    .ViewCartPageItem .Close img {
+        height: 14px;
+        width: auto;
+    }
+    .ViewCartPageItem .Close {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .EnterPromoCodeItem a {
+        font-size: 26px;
+        line-height: 35px;
+    }
+    .EnterPromoCodeItem {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid #ddd;
+    }
+    .EnterPromoCodeItem:first-child{
+        border-top: 0;
+        padding-top: 0;
+    }
+    .ViewCartPage h3 {
+        display: none;
+    }
+    .OrderSummery li h5 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 30px;
+    }
+    .OrderSummery li button {
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 30px;
+    }
+    .OrderSummery li h6 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .Secure h6 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .Secure {
+        margin-top: 30px;
+    }
+    .SpringHeaderImg img {
+        width: 100%;
+        height: auto;
+    }
+    .SpringHeaderContent {
+        margin-top: 50px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .SpringHeaderContent p {
+        margin-top: 10px;
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .SliderItem:hover .img .quickView{
+        opacity: 1;
+        visibility: hidden;
+        transform: translateY(0px);
+    }
+    .swiper-slide {
+        width: 100% !important;
+    }
+    .Spring .SliderItem .addCart {
+        opacity: 1;
+        visibility: visible;
+    }
+    .SliderItem .homepage_img img {
+        height: 240px;
+    }
+    .Product .next, .Product .prev {
+        top: 40%;
+    }
+    .SliderItem h3 {
+        font-size: 16px;
+        line-height: 25px;
+    }
+    .SliderItem p {
+        font-size: 13px;
+        line-height: 16px;
+    }
+    .MissionContent {
+        margin-top: 10px;
+        padding-right: 0;
+    }
+    .FooterItem .footer_social_link {
+        display: none;
+    }
+    .MissionContent p {
+        font-size: 16px;
+        line-height: normal;
+    }
+    .MissionContent .Signature {
+        text-align: left;
+    }
+    .MissionContent .Signature img{
+        height: 51px;
+        width: 120px;
+    }
+    .Mission .container{
+        max-width: 90%;
+    }
+    .AboutDetailsImg {
+        text-align: center;
+        margin-right: 0;
+    }
+    .AboutDetails {
+        padding: 30px 0;
+    }
+    .AboutDetailsImg img {
+        height: auto;
+        width: 100%;
+    }
+    .AboutDetailsContent {
+        text-align: center;
+    }
+    .AboutDetailsContent h2 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 30px;
+    }
+    .AboutDetailsContent p {
+        margin-top: 25px;
+        font-size: 24px;
+        line-height: 40px;
+        padding-right: 0;
+    }
+    .MoreAboutContent h4 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .MoreAboutContent p {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .MoreAboutContent a {
+        font-size: 20px;
+        line-height: 30px;
+        padding: 20px;
+    }
+    .BlogItem {
+        margin-bottom: 30px;
+    }
+    .BlogPart .overlay .header a span {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .BlogPart .overlay .header ul li {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .BlogPart .overlay .header {
+        height: 70%;
+    }
+    .commentPart span {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .BlogSingleContent .header img {
+        height: 50px;
+        width: 50px;
+    }
+    .BlogPart .overlay .bottom h4 a {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .BlogSingleContent .header a {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .BlogSingleContent .header li {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .BlogSingleContent .header li::after {
+        top: 8px;
+    }
+    .BlogSingleContent h3 {
+        font-size: 24px;
+        list-style: 35px;
+        margin-top: 30px;
+    }
+    .BlogSingleContent span {
+        font-size: 16px;
+        list-style: 24px;
+    }
+    .BlogSingleContent p {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .BlogSingleContent a {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .RecentPostItem img {
+        height: auto;
+        width: 100%;
+        object-fit: unset;
+    }
+    .RecentPostItem {
+        margin-bottom: 30px;
+    }
+    .BlogSingleContent {
+        border: none;
+        padding: 0;
+    }
+    .BlgHeader {
+        background: #FADA4D;
+        padding: 10px;
+    }
+    .Search input{
+        background: #FADA4D;
+    }
+    h1 {
+        font-size: 30px;
+        line-height: 47px;
+    }
+    .BannerContent h1 span {
+        font-size: 50px;
+    }
+    .FooterItem ul li a {
+        font-size: 13px;
+        line-height: 15px;
+        padding: 0;
+    }
+    .Footer li {
+        padding: 8px 10px;
+    }
+    .ProductDetails .right {
+        width: 70%;
+        text-align: right;
+    }
+    .ProductDetails .Header h6 {
+        font-size: 15px;
+        line-height: 25px;
+        font-weight: 400;
+        color: var(--text_color);
+        font-style: italic;
+        font-family: "times new roman", times, serif;
+        width: 80%;
+    }
+    .ProductDetails  .Header {
+        align-items: self-start;
+    }
+    .SpringHeaderContent h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
 
 
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 400;
-    font-display: block;
-    src: url("raleway400.woff2") format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 700;
-    font-display: block;
-    src: url("raleway700.woff2") format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-    font-display: block;
-    font-family: "Lato-Light";
-    src: url("latolight1.woff2") format("woff2"),
-    url("latolight2.woff") format("woff"),
-    url("latolight3.ttf") format("truetype");
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Lato Italic'), local('Lato-Italic'), url("lato400.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 700;
-    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("lato700.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 
-@font-face {
-    font-display: block;
-    font-family: "Lato-Light";
-    src: url("latolight1.woff2") format("woff2"),
-    url("latolight2.woff") format("woff"),
-    url("latolight3.ttf") format("truetype");
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Lato Italic'), local('Lato-Italic'), url("lato400.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-    font-display: block;
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 700;
-    src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url("lato700.woff2") format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }

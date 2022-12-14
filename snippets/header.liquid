@@ -79,65 +79,26 @@
         <!-- MobileMenu -->
         <div class="MobileMenu">
 
-            <div class="logoImg">
+            <div class="logo">
 
-                <a href="index.html"><img src="frontend_assets/images/logo.jpg" alt=""></a>
+                <a href="/">{{ 'logo.jpg' | asset_url | img_tag: 'Gita Omri' }}</a>
 
                 <div class="Bag">
-                    <button type="button">
-                        <a href="view_cart.html">
-                            <img src="frontend_assets/images/shopping-bag.png" alt="">
-                            <span>0</span>
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <a href="/cart">
+                            {{ 'shopping-bag.png' | asset_url | img_tag: 'Gita Omri' }}
+                            <span data-ajax-cart-bind-state="cart.item_count">{{ cart.item_count }}</span>
                         </a>
                     </button>
 
                 </div>
 
+                <div class="MobileMenuIcon">
 
-                <button type="button" class="MobileMenuIcon" data-bs-toggle="modal" data-bs-target="#MobileModal">
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="MobileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-                    <div class="modal-dialog">
-
-                        <div class="modal-content">
-
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                <img src="frontend_assets/images/white_close.png" alt="">
-                            </button>
-
-                            <div class="modal-body">
-
-                                <div class="MenuItem">
-
-                                    <ul>
-
-                                        <li class="dropdown">
-                                            <a href="" class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> Shop <i class="fas fa-chevron-down"></i> </a>
-
-                                            <ul class="subMenu dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <li><a href="spring.html">SPRING 23</a></li>
-                                                <li><a href="Omri_Essential.html">OMRI ESSENTIALS</a></li>
-                                            </ul>
-
-                                        </li>
-                                        <li> <a href="mission.html"> Our Mission </a> </li>
-                                        <li> <a href="about.html"> About Gita </a> </li>
-                                        <li> <a href="collection.html"> Collection </a> </li>
-                                        <li> <a href="media.html"> Media </a> </li>
-
-                                    </ul>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="MobileMenuIconBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <i class="fas fa-bars"></i>
+                    </button>
 
                 </div>
 
@@ -150,3 +111,57 @@
     </div>
 
 </section>
+
+<div class="modal fade MobileMenuPop" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-body">
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+
+                <div class="MobileMunu">
+
+                    <ul>
+                        {% for link in linklists.main-menu.links %}
+                        {% assign child_list_handle = link.title | handleize %}
+                            {% if linklists[child_list_handle].links != blank %}
+                            <li class="dropdown">
+
+                                <a class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-plus"></i>
+                                    <a href="{{ link.url }}"> {{ link.title }}</a>
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    {% for childlink in linklists[child_list_handle].links %}
+                                    <li>
+                                        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+
+                            </li>
+                            {% else %}
+                                <li>
+                                    {% if link.url == "https://runway360.cfda.com/designers/gita-omri-2" %}
+                                        <a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
+                                    {% else %}
+                                        <a href="{{ link.url }}">{{ link.title }}</a>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

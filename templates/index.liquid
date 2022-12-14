@@ -3,11 +3,13 @@
   <!-- BannerContent -->
   <div class="BannerContent">
 
-    <h1><span>30%</span> OFF CYBER MONDAY SALE</h1>
+    <h2>
+      <span class="h2_percent">30</span> <span class="off_monday">% OFF CYBER MONDAY SALE</span>
+      <br />
+      <span class="code"> CODE:  </span> <span class="code_coupon">CYBERMONDAY30</span>
+    </h2>
 
-    <h3><span> CODE:  </span> CYBERMONDAY30</h3>
-
-    <a href="">shop now</a>
+    <a href="/collections/spr23">shop now</a>
 
   </div>
 
@@ -77,7 +79,53 @@
 
 </section>
 
+<!-- PopUp Model -->
+<div class="modal fade" id="PopupModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <button type="button" class="PopupModelClose" data-bs-dismiss="modal" aria-label="Close"> <img src="{{ 'close.png' | asset_url }}" alt=""> </button>
+
+      <div class="LoadContent">
+
+        <div class="LoadItem">
+
+          <h4>15% off with code SS23TRUNK</h4>
+          <h5>Subscribe to Our Newsletter</h5>
+          <p>Sign up for email updates on the latest Gita Omri collections, campaigns and events.</p>
+
+          {% form 'customer' %}
+            <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+            <!-- item -->
+            <div class="CustomeInput d_flex">
+              <label>Name</label>
+              <input type="text" name="contact[name]" required>
+            </div>
+
+            <!-- item -->
+            <div class="CustomeInput d_flex">
+              <label>Email</label>
+              <input type="email" name="contact[email]" required>
+            </div>
+
+            <!-- item -->
+            <div class="CustomeInput d_flex">
+              <button type="submit" onclick="localStorage.setItem('subscribe', 1);">Subscribe Now</button>
+            </div>
+
+            {% endform %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
@@ -156,6 +204,13 @@
 
 
 <script>
+  $(window).on('load',function(){
+    let subscribe = localStorage.getItem('subscribe')
+    if ( subscribe != 1 ) {
+      $('#PopupModel').modal('show');
+    }
+  });
+
   function handleOption(handle) {
     jQuery.getJSON(window.Shopify.routes.root + 'products/' + handle + '.js', function(product) {
       console.log(product)
