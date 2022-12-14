@@ -31,6 +31,123 @@
 
 {% endcomment %}
 
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: black;
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+        max-width: 1200px;
+    }
+
+    /* The Close Button */
+    .close {
+        color: white;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #999;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .cursor {
+        cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    img {
+        margin-bottom: -4px;
+    }
+
+    .caption-container {
+        text-align: center;
+        background-color: black;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .demo {
+        opacity: 0.6;
+    }
+
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+
+    img.hover-shadow {
+        transition: 0.3s;
+    }
+
+    .hover-shadow:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
@@ -66,7 +183,7 @@
                             <div class="swiper-wrapper">
                                 {% for image in product.images %}
                                     <div class="swiper-slide">
-                                        <img src="{{ image.src | img_url: '500x375' }}" style="width: 413px; height: 375px;" alt="{{ image.alt | escape }}"/>
+                                        <img src="{{ image.src | img_url: '413x375' }}" style="width: 413px; height: 375px;" alt="{{ image.alt | escape }}" onclick="productPhotoZoom('{{ product.handle }}')"/>
                                     </div>
                                 {% endfor %}
                                 <!-- img -->
@@ -97,18 +214,6 @@
                             <div class="textItem">
                                 {{ product.description }}
                             </div>
-
-                            <!-- item -->
-                            {% comment %}<div class="textItem">{% endcomment %}
-                                {% comment %}<h5>Size/Fit</h5>{% endcomment %}
-                                {% comment %}<p>Sizes displayed 2 and 20.</p>{% endcomment %}
-                            {% comment %}</div>{% endcomment %}
-{% comment %}{% endcomment %}
-                            {% comment %}<!-- item -->{% endcomment %}
-                            {% comment %}<div class="textItem">{% endcomment %}
-                                {% comment %}<h5>Composition</h5>{% endcomment %}
-                                {% comment %}<p>Print - Brushed knit 100% Polyester </p>{% endcomment %}
-                            {% comment %}</div>{% endcomment %}
 
                         </div>
 
@@ -210,6 +315,37 @@
     </div>
 
 </section>
+
+
+<div id="imageModal" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {% comment %}<span class="close cursor" onclick="closeModal()">&times;</span>{% endcomment %}
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            {% for image in product.images %}
+                <div class="mySlides">
+                    <div class="numbertext">1 / 4</div>
+                    <img src="{{ image.src | img_url }}" style="width:100%" />
+                </div>
+            {% endfor %}
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <div class="caption-container">
+                <p id="caption"></p>
+            </div>
+
+            {% for image in product.images %}
+                <div class="column">
+                    <img class="demo cursor" src="{{ image.src | img_url }}" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise">
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
 <script>
     window.onload = combineVariant();
 
@@ -233,6 +369,41 @@
         // $("#id option:contains(" + ItemsJoin + ")").prop("selected","selected")
 
         console.log($('#id').val())
+    }
+
+    function productPhotoZoom(handle) {
+        jQuery.getJSON(window.Shopify.routes.root + 'products/' + handle + '.js', function(product) {
+            console.log(product);
+            $('#imageModal').modal('show')
+        })
+    }
+
+    let  slideIndex = 1;
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        captionText.innerHTML = dots[slideIndex-1].alt;
     }
 </script>
 <script type="module">

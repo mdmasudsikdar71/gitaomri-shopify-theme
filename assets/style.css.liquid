@@ -667,12 +667,13 @@ p{
 .CustomeInput input, .CustomeInput textarea, .CustomeInput select {
     width: 100%;
     padding: 10px 15px;
-    border-radius: 0px;
+    border-radius: 0;
     font-style: italic;
     border: 1px solid #DDD;
     font-size: 14px;
     line-height: 24px;
     color: var(--main_color1);
+    cursor: pointer;
 }
 
 .CustomeInput input{
@@ -1291,7 +1292,7 @@ input[type='radio']:checked:after {
     font-weight: 400;
     color: var(--text_color);
     font-style: italic;
-    font-family: "times new roman", times, serif;
+    font-family: lato-light, lato, sans-serif;
 }
 
 .ProductDetails .Header h6 a:hover {
@@ -1302,7 +1303,7 @@ input[type='radio']:checked:after {
 .ProductDetails .Header span{
     color: var(--main_color1);
     font-weight: 500;
-    font-family: "times new roman", times, serif;
+    font-family: lato-light, lato, sans-serif;
 }
 
 .ProductDetailsContent{
@@ -1368,6 +1369,10 @@ input[type='radio']:checked:after {
     height: 100%;
     object-fit: fill;
     cursor: pointer;
+}
+
+.ProductDetailsContent .ProductSwiper2 img {
+    cursor: url({{ 'zoom.png' | asset_url }}),auto;
 }
 
 .ProductDetailsContent .ProductDetailsImg {
@@ -1505,7 +1510,7 @@ input[type='radio']:checked:after {
     color: #FBE171;
     font-weight: 400;
     font-style: italic;
-    font-family: "times new roman", times, serif;
+    font-family: lato-light, lato, sans-serif;
 }
 
 .EnterPromoCodeItem a img{
@@ -1539,7 +1544,6 @@ input[type='radio']:checked:after {
 
 .OrderSummery li button{
     font-size: 16px;
-    font-weight: 24px;
     font-weight: 400;
     font-style: italic;
     font-family: "times new roman", times, serif;
@@ -1553,7 +1557,6 @@ input[type='radio']:checked:after {
 
 .OrderSummery li h6{
     font-size: 20px;
-    font-weight: 30px;
     font-weight: 400;
     font-style: italic;
 }
@@ -1638,7 +1641,7 @@ input[type='radio']:checked:after {
     line-height: 28px;
     font-weight: 400;
     color: var(--main_color1);
-    font-family: "times new roman", times, serif;
+    font-family: lato-light, lato, sans-serif;
     font-style: italic;
     text-align: center;
 }
@@ -1813,7 +1816,7 @@ button.PopupModelClose {
 
 .BlogSingle a{
     color: var(--main_color1);
-    font-family: "times new roman", times, serif;
+    font-family: lato-light, lato, sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-style: italic;
@@ -1874,7 +1877,7 @@ button.PopupModelClose {
     display: flex;
     align-items: center;
     font-weight: 400;
-    font-family: "times new roman", times, serif;
+    font-family: lato-light, lato, sans-serif;
     font-style: normal;
 }
 
@@ -1889,7 +1892,7 @@ button.PopupModelClose {
     line-height: 20px;
     color: var(--main_color1);
     font-weight: 400;
-    font-family: "times new roman", times, serif;
+    font-family: lato-light, lato, sans-serif;
     display: inline-block;
     margin-right: 10px;
     padding-right: 10px;
