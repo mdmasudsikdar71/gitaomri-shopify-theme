@@ -571,6 +571,22 @@ p{
     position: relative;
 }
 
+.SliderItem .Img{
+    display: block;
+}
+
+.SliderItem:hover .mainImage{
+    display: none;
+}
+
+.SliderItem .HoverImg{
+    display: none;
+}
+
+.SliderItem:hover .HoverImg{
+    display: block;
+}
+
 .SliderItem .img a{
     width: 100%;
 }
@@ -616,6 +632,28 @@ p{
     left: 10px;
     cursor: pointer;
     font-size: 20px;
+}
+
+.LoadContentImagePopup .nextSwiper, .LoadContentImagePopup .prevSwiper{
+    position: absolute;
+    top: 44%;
+    left: 10px;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.LoadContentImagePopup .nextSwiper {
+    right: 10px;
+    left: unset;
+}
+
+.LoadContentImagePopup .swiper-pagination {
+    margin-top: 30px;
+    position: relative;
+}
+
+.ProductQuickViewImageSwiper .quickViewProductPagination {
+    text-align: center;
 }
 
 .Product .next {
@@ -1764,6 +1802,7 @@ input[type='radio']:checked:after {
     width: 100%;
     height: 100vh;
     background: rgba(237, 237, 237, 0.85);
+    border: none;
 }
 
 button.PopupModelClose {
@@ -1772,9 +1811,55 @@ button.PopupModelClose {
 
 
 /* ---------------------------------------------------------------------------------------------------------------------------
+    div#PopupImageModel
+--------------------------------------------------------------------------------------------------------------------------- */
+#PopupImageModel{
+    background: none;
+}
+
+.PopupImageModelClose{
+    z-index: 999;
+    cursor: pointer;
+    top: 30px;
+    right: 30px;
+}
+
+.PopupImageModelClose img{
+    height: 30px;
+}
+
+#PopupImageModel .modal-dialog {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+#PopupImageModel .modal-content {
+    width: 100%;
+    height: 100vh;
+    background: rgba(237, 237, 237, 0.85);
+}
+
+button.PopupImageModelClose {
+    position: absolute;
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------
     LoadPage
 --------------------------------------------------------------------------------------------------------------------------- */
 
+
+.LoadContentImagePopup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    max-width: 535px;
+    padding: 30px;
+}
 
 .LoadContent {
     position: absolute;

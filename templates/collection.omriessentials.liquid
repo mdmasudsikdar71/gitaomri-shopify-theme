@@ -38,7 +38,14 @@
                         <!-- img -->
                         <div class="img">
                             <a href="{{ product.url | within: collection }}">
-                            {{ product.featured_image.src | img_url: '361x361' | img_tag: 'Gita Omri' }}
+                                <img class="mainImage" src="{{ product.featured_image.src | product_img_url: '361x361' }}" alt="Product Image">
+                                {% if product.images.size > 1 %}
+                                    <img class="HoverImg" src="{{ product.images.last | img_url: '361x361' }}" alt="{{ product.images.last.alt | escape }}">
+                                {% else %}
+                                    <img class="HoverImg" src="{{ product.featured_image.src | product_img_url: '361x361' }}" alt="Product Image">
+                                {% endif %}
+
+                                <span>Pre Sale</span>
                             {% comment %}
                             {% unless product.available %}
                             <span>sold out</span>
@@ -94,8 +101,12 @@
                         <!-- ModalImg -->
                         <div class="col-lg-6">
 
+
                             <div class="ModalImg">
-                                <img src="" id="feature_image" alt="">
+                                <div class="swiper ProductQuickViewImageSwiper">
+                                    <div class="swiper-wrapper" id="quickViewImageSlider"></div>
+                                    <div class="quickViewProductPagination"></div>
+                                </div>
                             </div>
 
                         </div>
@@ -156,7 +167,7 @@
         jQuery.getJSON(window.Shopify.routes.root + 'products/' + handle + '.js', function(product) {
             console.log(product)
             $('#product_title').text(product.title)
-            $('#feature_image').attr('src', product.featured_image)
+            // $('#feature_image').attr('src', product.featured_image)
             $('#product_url').attr('href', product.url)
             $('#quantity').val(1)
             if(product.price_varies) {
@@ -167,6 +178,19 @@
                 let price = parseFloat(product.price / 100).toFixed(2);
                 $('#product_price').text("$" + price)
             }
+
+            let htmlImage = '';
+            product.images.forEach(function (image) {
+                htmlImage += '<div class="swiper-slide">' +
+                    '<div class="SliderItem">' +
+                    '<div class="swiper-slide">' +
+                    '<img src="https:' + image + '" alt="Product Image">' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+            })
+
+            $('#quickViewImageSlider').html(htmlImage);
             let html = '';
             product.options.forEach(function(item) {
                 html += '<div class="CustomeInput">';

@@ -34,7 +34,30 @@
 
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
-
+{%- liquid
+    assign previous_product = collection.previous_product
+    assign next_product = collection.next_product
+    if previous_product or next_product
+    else
+        assign collectionList = product.collections[0].handle
+        assign previous_product = 'na'
+        assign next_product = 'na'
+        assign last = collections[collectionList].products_count
+        for p in collections[collectionList].products
+            if p.handle == product.handle
+                assign prev = forloop.index | minus: 2
+                assign next = forloop.index
+                if prev >= 0
+                    assign previous_product = collections[collectionList].products[prev].handle
+                endif
+                if last >= next
+                    assign next_product = collections[collectionList].products[next].handle
+                endif
+                break
+            endif
+        endfor
+    endif
+-%}
 <section class="ProductDetails">
 
     <div class="container">
@@ -47,8 +70,8 @@
                     <h6><a href="/">Home</a><span> / </span>{{ product.title }}</h6>
 
                     <div class="right">
-                        <a class="prev"><i class="fas fa-chevron-left"></i> Prev</a> |
-                        <a class="next"> Next <i class="fas fa-chevron-right"></i></a>
+                        <a {% if previous_product != 'na' %} href="{{ previous_product }}" {% else %} disabled {% endif %} class="prev"><i class="fas fa-chevron-left"></i> Prev</a> |
+                        <a {% if next_product  != 'na' %} href="{{ next_product }}" {% else %} disabled {% endif %} class="next"> Next <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
 
@@ -188,19 +211,18 @@
 
                                 <div class="SocialIcon">
 
-                                    <a target="_top" href="">
+                                    <a onclick="window.open('https://api.whatsapp.com/send?text=https://{{ request.host }}{{ product.url }}', 'myWindow', 'width=600,height=400')" style="cursor: pointer">
                                         {{ 'whatsapp.png' | asset_url | img_tag }}
                                     </a>
-                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://{{ request.host }}{{ product.url }}">
+                                    <a onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://{{ request.host }}{{ product.url }}', 'myWindow', 'width=600,height=400')" style="cursor: pointer">
                                         {{ 'facebook.png' | asset_url | img_tag }}
                                     </a>
-                                    <a href="">
+                                    <a onclick="window.open('https://twitter.com/intent/tweet?url=https://{{ request.host }}{{ product.url }}&text={{ product.title }}', 'myWindow', 'width=600,height=400')" style="cursor: pointer">
                                         {{ 'twitter.png' | asset_url | img_tag }}
                                     </a>
-                                    <a href="">
+                                    <a onclick="window.open('http://pinterest.com/pin/create/button/?url=https://{{ request.host }}{{ product.url }}&media=https:{{ product.featured_image.src | product_img_url }}&description={{ product.title }}', 'myWindow', 'width=600,height=400')" style="cursor: pointer">
                                         {{ 'pinterest.png' | asset_url | img_tag }}
                                     </a>
-
                                 </div>
 
                             </div>
@@ -218,6 +240,56 @@
     </div>
 
 </section>
+
+
+<!-- PopUp Model -->
+<div class="modal fade" id="PopupImageModel" tabindex="-1" aria-labelledby="exampleModalLabel" style="background: white" data-bs-backdrop="true" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <button type="button" class="PopupImageModelClose" data-bs-dismiss="modal" aria-label="Close"> <img src="{{ 'close.png' | asset_url }}" alt=""> </button>
+
+            <div class="LoadContentImagePopup">
+
+                <div class="nextSwiper"><i class="fas fa-chevron-right"></i></div>
+                <div class="prevSwiper"><i class="fas fa-chevron-left"></i></div>
+
+                <div class="ProductSlider">
+
+                    <div class="swiper ProductImageSwiper">
+
+                        <div class="swiper-wrapper">
+                            {% for image in product.images %}
+
+                                <!-- item -->
+                                <div class="swiper-slide">
+
+                                    <div class="SliderItem">
+
+                                        <!-- img -->
+                                        <div class="swiper-slide">
+                                            <img src="{{ image.src | product_img_url: '361x361' }}" alt="Product Image">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 <script>
     window.onload = combineVariant();
@@ -247,7 +319,7 @@
     function productPhotoZoom(handle) {
         jQuery.getJSON(window.Shopify.routes.root + 'products/' + handle + '.js', function(product) {
             console.log(product);
-            $('#imageModal').modal('show')
+            $('#PopupImageModel').modal('show')
         })
     }
 
