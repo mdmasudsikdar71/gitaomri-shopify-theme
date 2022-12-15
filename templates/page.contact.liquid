@@ -18,7 +18,7 @@
 
         <div class="ContactFrom">
 
-          <h2>CONTACT</h2>
+          <span>CONTACT</span>
 
           {% form 'contact' %}
 
@@ -48,7 +48,7 @@
               <div class="col-lg-12">
 
                 <div class="CustomeInput">
-                  <label for="email">Email</label>
+                  <label for="email">Email *</label>
                   <input type="email" name="contact[email]" id="email">
                 </div>
 
@@ -90,11 +90,13 @@
 
             <li class="d_flex">
               <h5>PR + MEDIA</h5>
+              <h5>|</h5>
               <a href="mailto:{{ settings.media_email }}">{{ settings.media_email }}</a>
             </li>
 
             <li class="d_flex">
               <h5>WHOLESALE</h5>
+              <h5>|</h5>
               <a href="mailto:{{ settings.wholesale_email }}">{{ settings.wholesale_email }}</a>
             </li>
 

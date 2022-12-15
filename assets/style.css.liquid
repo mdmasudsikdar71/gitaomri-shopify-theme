@@ -25,7 +25,7 @@ button {
 body {
     background: #fff;
     overflow-x: hidden;
-    font-family: "times new roman", times, serif;
+    {% comment %}font-family: "times new roman", times, serif;{% endcomment %}
 }
 
 .container {
@@ -154,6 +154,7 @@ p{
 
 .MenuItem a{
     text-transform: uppercase;
+    font-weight: 600;
     font-family: lato-light, lato, sans-serif;
 }
 
@@ -437,11 +438,12 @@ p{
 }
 
 .BannerContent a {
-    font-size: 14px;
+    font-size: 15px;
     {% comment %}font-weight: normal;{% endcomment %}
     font-style: italic;
     color: #A70757;
     margin-top: 80px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     background: #EBEBEB;
     border: 1px solid #A70757;
@@ -463,7 +465,7 @@ p{
 
 .BanenrImg img{
     width: 100%;
-    height: 880px;
+    height: auto;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------
@@ -532,7 +534,7 @@ p{
 .SliderItem h3{
     font-size: 16px;
     line-height: 22px;
-    font-weight: 400;
+    font-weight: 600;
     font-style: italic;
     position: relative;
     padding-bottom: 10px;
@@ -1242,17 +1244,27 @@ input[type='radio']:checked:after {
     width: 100%;
 }
 
-.ContactFrom h2{
+.ContactFrom span{
     font-size: 56px;
-    line-height: 65px;
-    font-weight: 300;
-    font-family: 'Lato', sans-serif;
+    line-height: 78px;
+    font-weight: 400;
+    font-style: normal;
+    font-family: raleway, sans-serif;
 }
 
 .ContactFrom .CustomeInput label{
     font-style: normal;
     font-size: 14px;
-    font-family: 'Lato', sans-serif;
+    line-height: 14px;
+    font-family: avenir-lt-w01_35-light1475496, avenir-lt-w05_35-light, sans-serif;
+}
+
+.ContactFrom .CustomeInput input, .ContactFrom .CustomeInput textarea {
+    cursor: text;
+}
+
+.ContactFrom .CustomeInput input:focus, .ContactFrom .CustomeInput textarea:focus {
+    border: 2px solid var(--hover_color);
 }
 
 .ContactFrom .CustomeInput.button{
@@ -1262,6 +1274,8 @@ input[type='radio']:checked:after {
 .ContactFrom .CustomeInput button{
     background: var(--hover_color);
     color: var(--white_color);
+    font-family: avenir-lt-w01_35-light1475496, avenir-lt-w05_35-light, sans-serif;
+    font-weight: 400;
     font-size: 14px;
     line-height: 22px;
     padding: 5px 50px;
@@ -1271,7 +1285,9 @@ input[type='radio']:checked:after {
 }
 
 .ContactFrom .CustomeInput button:hover{
-    background: #e7c84a;
+    background: #fff;
+    color: #000;
+    border: 1px solid var(--hover_color);
 }
 
 .MailAddress{
@@ -1358,7 +1374,7 @@ input[type='radio']:checked:after {
     justify-content: space-between;
 }
 
-.ProductDetails .right button{
+.ProductDetails .right a{
     font-size: 14px;
     line-height: 16px;
     color: var(--main_color1);
@@ -1366,16 +1382,16 @@ input[type='radio']:checked:after {
     background: transparent;
 }
 
-.ProductDetails .right button svg{
-    margin-right: 5px;
+.ProductDetails .right a svg{
+    margin-left: 5px;
 }
 
-.ProductDetails .right button.prev{
+.ProductDetails .right a.prev{
     padding-right: 5px;
 }
 
-.ProductDetails .right button.next{
-    padding-left: 5px;
+.ProductDetails .right a.next{
+    padding-right: 5px;
 }
 
 /* Slider */
@@ -2754,6 +2770,7 @@ button.PopupModelClose {
         font-size: 30px;
         line-height: 40px;
     }
+
     .Secure h6 {
         font-size: 30px;
         line-height: 40px;
@@ -2906,6 +2923,37 @@ button.PopupModelClose {
 
     .ModalContent .mobile_textItem {
         display: block;
+    }
+
+    .LoadContent .LoadItem {
+        padding: 15px;
+    }
+
+    .LoadContent {
+        width: 90%;
+    }
+
+    .LoadContent .LoadItem .CustomeInput.d_flex {
+        display: block;
+    }
+
+    .LoadContent .LoadItem .CustomeInput.d_flex:last-child{
+        display: flex;
+    }
+
+    .LoadItem h4 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .LoadItem h5 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .LoadItem p {
+        font-size: 12px;
+        line-height: 14px;
     }
 
     .container {
@@ -3079,7 +3127,7 @@ button.PopupModelClose {
         width: 100%;
     }
     .BanenrImg img{
-        height: 320px;
+        height: auto;
     }
     .Footer li {
         padding: 10px 15px;
@@ -3151,247 +3199,265 @@ button.PopupModelClose {
         font-size: 26px;
         line-height: 35px;
     }
-    .EnterPromoCodeItem {
-        margin-top: 30px;
-        padding-top: 30px;
-        border-top: 1px solid #ddd;
+
+    .MailAddress .d_flex {
+        display: block;
     }
-    .EnterPromoCodeItem:first-child{
-        border-top: 0;
+
+    .ContactFrom span{
+        font-size: 32px;
+    }
+
+    .ContactImg {
         padding-top: 0;
-    }
-    .ViewCartPage h3 {
-        display: none;
-    }
-    .OrderSummery li h5 {
-        font-size: 30px;
-        line-height: 40px;
-        margin-top: 30px;
-    }
-    .OrderSummery li button {
-        font-size: 30px;
-        line-height: 40px;
-        margin-top: 30px;
-    }
-    .OrderSummery li h6 {
-        font-size: 30px;
-        line-height: 40px;
-    }
-    .Secure h6 {
-        font-size: 30px;
-        line-height: 40px;
-    }
-    .Secure {
-        margin-top: 30px;
-    }
-    .SpringHeaderImg img {
-        width: 100%;
-        height: auto;
-    }
-    .SpringHeaderContent {
-        margin-top: 50px;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .SpringHeaderContent p {
-        margin-top: 10px;
-        line-height: 30px;
-        font-size: 16px;
-    }
-    .SliderItem:hover .img .quickView{
-        opacity: 1;
-        visibility: hidden;
-        transform: translateY(0px);
-    }
-    .swiper-slide {
-        width: 100% !important;
-    }
-    .Spring .SliderItem .addCart {
-        opacity: 1;
-        visibility: visible;
-    }
-    .SliderItem .homepage_img img {
-        height: 240px;
-    }
-    .Product .next, .Product .prev {
-        top: 40%;
-    }
-    .SliderItem h3 {
-        font-size: 16px;
-        line-height: 25px;
-    }
-    .SliderItem p {
-        font-size: 13px;
-        line-height: 16px;
-    }
-    .MissionContent {
-        margin-top: 10px;
-        padding-right: 0;
-    }
-    .FooterItem .footer_social_link {
-        display: none;
-    }
-    .MissionContent p {
-        font-size: 16px;
-        line-height: normal;
-    }
-    .MissionContent .Signature {
-        text-align: left;
-    }
-    .MissionContent .Signature img{
-        height: 51px;
-        width: 120px;
-    }
-    .Mission .container{
-        max-width: 90%;
-    }
-    .AboutDetailsImg {
-        text-align: center;
         margin-right: 0;
     }
-    .AboutDetails {
-        padding: 30px 0;
+
+    .ContactFrom .CustomeInput.button{
+        text-align: left;
     }
-    .AboutDetailsImg img {
-        height: auto;
-        width: 100%;
-    }
-    .AboutDetailsContent {
-        text-align: center;
-    }
-    .AboutDetailsContent h2 {
-        font-size: 30px;
-        line-height: 40px;
-        margin-top: 30px;
-    }
-    .AboutDetailsContent p {
-        margin-top: 25px;
-        font-size: 24px;
-        line-height: 40px;
-        padding-right: 0;
-    }
-    .MoreAboutContent h4 {
-        font-size: 30px;
-        line-height: 40px;
-    }
-    .MoreAboutContent p {
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 30px;
-    }
-    .MoreAboutContent a {
-        font-size: 20px;
-        line-height: 30px;
-        padding: 20px;
-    }
-    .BlogItem {
-        margin-bottom: 30px;
-    }
-    .BlogPart .overlay .header a span {
-        font-size: 16px;
-        line-height: 26px;
-    }
-    .BlogPart .overlay .header ul li {
-        font-size: 16px;
-        line-height: 26px;
-    }
-    .BlogPart .overlay .header {
-        height: 70%;
-    }
-    .commentPart span {
-        font-size: 16px;
-        line-height: 26px;
-    }
-    .BlogSingleContent .header img {
-        height: 50px;
-        width: 50px;
-    }
-    .BlogPart .overlay .bottom h4 a {
-        font-size: 22px;
-        line-height: 30px;
-    }
-    .BlogSingleContent .header a {
-        font-size: 14px;
-        line-height: 20px;
-    }
-    .BlogSingleContent .header li {
-        font-size: 14px;
-        line-height: 20px;
-    }
-    .BlogSingleContent .header li::after {
-        top: 8px;
-    }
-    .BlogSingleContent h3 {
-        font-size: 24px;
-        list-style: 35px;
-        margin-top: 30px;
-    }
-    .BlogSingleContent span {
-        font-size: 16px;
-        list-style: 24px;
-    }
-    .BlogSingleContent p {
-        font-size: 20px;
-        line-height: 30px;
-    }
-    .BlogSingleContent a {
-        font-size: 20px;
-        line-height: 30px;
-    }
-    .RecentPostItem img {
-        height: auto;
-        width: 100%;
-        object-fit: unset;
-    }
-    .RecentPostItem {
-        margin-bottom: 30px;
-    }
-    .BlogSingleContent {
-        border: none;
-        padding: 0;
-    }
-    .BlgHeader {
-        background: #FADA4D;
-        padding: 10px;
-    }
-    .Search input{
-        background: #FADA4D;
-    }
-    h1 {
-        font-size: 30px;
-        line-height: 47px;
-    }
-    .BannerContent h1 span {
-        font-size: 50px;
-    }
-    .FooterItem ul li a {
-        font-size: 13px;
-        line-height: 15px;
-        padding: 0;
-    }
-    .Footer li {
-        padding: 8px 10px;
-    }
-    .ProductDetails .right {
-        width: 70%;
-        text-align: right;
-    }
-    .ProductDetails .Header h6 {
-        font-size: 15px;
-        line-height: 25px;
-        font-weight: 400;
-        color: var(--text_color);
-        font-style: italic;
-        font-family: "times new roman", times, serif;
-        width: 80%;
-    }
-    .ProductDetails  .Header {
-        align-items: self-start;
-    }
-    .SpringHeaderContent h2 {
-        font-size: 40px;
-        margin-bottom: 20px;
-    }
+
+.EnterPromoCodeItem {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+}
+.EnterPromoCodeItem:first-child{
+    border-top: 0;
+    padding-top: 0;
+}
+.ViewCartPage h3 {
+    display: none;
+}
+.OrderSummery li h5 {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 30px;
+}
+.OrderSummery li button {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 30px;
+}
+.OrderSummery li h6 {
+    font-size: 30px;
+    line-height: 40px;
+}
+.Secure h6 {
+    font-size: 30px;
+    line-height: 40px;
+}
+.Secure {
+    margin-top: 30px;
+}
+.SpringHeaderImg img {
+    width: 100%;
+    height: auto;
+}
+.SpringHeaderContent {
+    margin-top: 50px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.SpringHeaderContent p {
+    margin-top: 10px;
+    line-height: 30px;
+    font-size: 16px;
+}
+.SliderItem:hover .img .quickView{
+    opacity: 1;
+    visibility: hidden;
+    transform: translateY(0px);
+}
+.swiper-slide {
+    width: 100% !important;
+}
+.Spring .SliderItem .addCart {
+    opacity: 1;
+    visibility: visible;
+}
+.SliderItem .homepage_img img {
+    height: 240px;
+}
+.Product .next, .Product .prev {
+    top: 40%;
+}
+.SliderItem h3 {
+    font-size: 16px;
+    line-height: 25px;
+}
+.SliderItem p {
+    font-size: 13px;
+    line-height: 16px;
+}
+.MissionContent {
+    margin-top: 10px;
+    padding-right: 0;
+}
+.FooterItem .footer_social_link {
+    display: none;
+}
+.MissionContent p {
+    font-size: 16px;
+    line-height: normal;
+}
+.MissionContent .Signature {
+    text-align: left;
+}
+.MissionContent .Signature img{
+    height: 51px;
+    width: 120px;
+}
+.Mission .container{
+    max-width: 90%;
+}
+.AboutDetailsImg {
+    text-align: center;
+    margin-right: 0;
+}
+.AboutDetails {
+    padding: 30px 0;
+}
+.AboutDetailsImg img {
+    height: auto;
+    width: 100%;
+}
+.AboutDetailsContent {
+    text-align: center;
+}
+.AboutDetailsContent h2 {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 30px;
+}
+.AboutDetailsContent p {
+    margin-top: 25px;
+    font-size: 24px;
+    line-height: 40px;
+    padding-right: 0;
+}
+.MoreAboutContent h4 {
+    font-size: 30px;
+    line-height: 40px;
+}
+.MoreAboutContent p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+}
+.MoreAboutContent a {
+    font-size: 20px;
+    line-height: 30px;
+    padding: 20px;
+}
+.BlogItem {
+    margin-bottom: 30px;
+}
+.BlogPart .overlay .header a span {
+    font-size: 16px;
+    line-height: 26px;
+}
+.BlogPart .overlay .header ul li {
+    font-size: 16px;
+    line-height: 26px;
+}
+.BlogPart .overlay .header {
+    height: 70%;
+}
+.commentPart span {
+    font-size: 16px;
+    line-height: 26px;
+}
+.BlogSingleContent .header img {
+    height: 50px;
+    width: 50px;
+}
+.BlogPart .overlay .bottom h4 a {
+    font-size: 22px;
+    line-height: 30px;
+}
+.BlogSingleContent .header a {
+    font-size: 14px;
+    line-height: 20px;
+}
+.BlogSingleContent .header li {
+    font-size: 14px;
+    line-height: 20px;
+}
+.BlogSingleContent .header li::after {
+    top: 8px;
+}
+.BlogSingleContent h3 {
+    font-size: 24px;
+    list-style: 35px;
+    margin-top: 30px;
+}
+.BlogSingleContent span {
+    font-size: 16px;
+    list-style: 24px;
+}
+.BlogSingleContent p {
+    font-size: 20px;
+    line-height: 30px;
+}
+.BlogSingleContent a {
+    font-size: 20px;
+    line-height: 30px;
+}
+.RecentPostItem img {
+    height: auto;
+    width: 100%;
+    object-fit: unset;
+}
+.RecentPostItem {
+    margin-bottom: 30px;
+}
+.BlogSingleContent {
+    border: none;
+    padding: 0;
+}
+.BlgHeader {
+    background: #FADA4D;
+    padding: 10px;
+}
+.Search input{
+    background: #FADA4D;
+}
+h1 {
+    font-size: 30px;
+    line-height: 47px;
+}
+.BannerContent h1 span {
+    font-size: 50px;
+}
+.FooterItem ul li a {
+    font-size: 13px;
+    line-height: 15px;
+    padding: 0;
+}
+.Footer li {
+    padding: 8px 10px;
+}
+.ProductDetails .right {
+    width: 70%;
+    text-align: right;
+}
+.ProductDetails .Header h6 {
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 400;
+    color: var(--text_color);
+    font-style: italic;
+    font-family: "times new roman", times, serif;
+    width: 80%;
+}
+.ProductDetails  .Header {
+    align-items: self-start;
+}
+.SpringHeaderContent h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
 
 
 
