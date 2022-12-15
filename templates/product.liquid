@@ -105,6 +105,7 @@
                         </div>
 
                         <!-- thumbsSlider -->
+                        {% if product.images.size > 1 %}
                         <div thumbsSlider="" class="swiper ProductSwiper">
 
                             <div class="swiper-wrapper">
@@ -118,6 +119,7 @@
                             </div>
 
                         </div>
+                        {% endif %}
 
                         <!-- text -->
                         <div class="text pc_textItem">
